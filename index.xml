@@ -6,10 +6,21 @@
     <description>Recent content on K.Wilczynski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 May 2019 12:14:34 +0600</lastBuildDate>
+    <lastBuildDate>Thu, 30 May 2019 12:14:34 +0600</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Markdown test</title>
+      <link>/blog/markdown/</link>
+      <pubDate>Thu, 30 May 2019 12:14:34 +0600</pubDate>
+      
+      <guid>/blog/markdown/</guid>
+      <description>This content: LINK
+Advertisement :)
+ pica - high quality and fast image</description>
+    </item>
     
     <item>
       <title>Amazon increase income 1.5 Million</title>
@@ -17,7 +28,7 @@
       <pubDate>Sun, 12 May 2019 12:14:34 +0600</pubDate>
       
       <guid>/blog/amazon-increase-income.1/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</description>
     </item>
     
     <item>
@@ -26,7 +37,7 @@
       <pubDate>Sun, 12 May 2019 12:14:34 +0600</pubDate>
       
       <guid>/blog/amazon-increase-income.2/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</description>
     </item>
     
     <item>
@@ -35,7 +46,7 @@
       <pubDate>Sun, 12 May 2019 12:14:34 +0600</pubDate>
       
       <guid>/blog/amazon-increase-income.3/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</description>
     </item>
     
     <item>
@@ -44,7 +55,7 @@
       <pubDate>Sun, 12 May 2019 12:14:34 +0600</pubDate>
       
       <guid>/blog/amazon-increase-income.4/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</description>
     </item>
     
     <item>
@@ -53,16 +64,7 @@
       <pubDate>Sun, 12 May 2019 12:14:34 +0600</pubDate>
       
       <guid>/blog/amazon-increase-income.5/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
-    </item>
-    
-    <item>
-      <title>Amazon increase income 1.5 Million</title>
-      <link>/blog/amazon-increase-income/</link>
-      <pubDate>Sun, 12 May 2019 12:14:34 +0600</pubDate>
-      
-      <guid>/blog/amazon-increase-income/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</description>
     </item>
     
   </channel>
