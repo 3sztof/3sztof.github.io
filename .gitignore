@@ -1,0 +1,17 @@
+# Hugo specific
+.hugo_build.lock
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+/themes/*
+!/themes/.gitkeep
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
