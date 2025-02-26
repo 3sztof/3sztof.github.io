@@ -17,16 +17,7 @@ This repository contains my personal website built with [Hugo](https://gohugo.io
    cd 3sztof.github.io
    ```
 
-2. Initialize and update the theme submodule:
-   ```bash
-   git submodule init
-   git submodule update
-   ```
-   
-   Alternatively, clone with submodules in one command:
-   ```bash
-   git clone --recurse-submodules https://github.com/3sztof/3sztof.github.io.git
-   ```
+2. No additional steps needed as the theme is included directly in the repository.
 
 3. Install Blowfish tools:
    ```bash
@@ -63,27 +54,50 @@ blowfish --help
 - `content/` - All website content (posts, pages)
 - `assets/` - CSS, JavaScript, and images used in templates
 - `config/` - Hugo configuration files
-- `themes/blowfish/` - The Blowfish theme (as a git submodule)
+- `themes/blowfish/` - The Blowfish theme (included directly in the repository)
 - `public/` - Built site (generated when running `hugo`)
 
 ## Deployment
 
 This site is set up to deploy automatically to GitHub Pages when changes are pushed to the main branch. The GitHub Actions workflow:
 
-1. Checks out the repository (including submodules)
+1. Checks out the repository
 2. Sets up Hugo
 3. Builds the site
 4. Deploys to the gh-pages branch
 
 ## Updating the Theme
 
-To update the Blowfish theme to the latest version:
+Since the Blowfish theme is included directly in the repository (not as a submodule), use this process to update the theme:
 
 ```bash
+# Navigate to the theme directory
 cd themes/blowfish
-git pull origin main
+
+# Add the upstream repository as a remote (only needed once)
+git remote add upstream https://github.com/nunocoracao/blowfish.git
+
+# Fetch the latest changes from the upstream repository
+git fetch upstream
+
+# Apply the updates (choose one approach)
+# Option 1: Merge all upstream changes
+git merge upstream/main
+
+# Option 2: Create a branch to review changes first (recommended)
+git checkout -b theme-update
+git merge upstream/main
+# After reviewing, merge the branch to main
+
+# Option 3: Cherry-pick specific commits
+git log --oneline upstream/main
+git cherry-pick <commit-hash>
+
+# Return to the project root
 cd ../..
 ```
+
+After updating the theme, test locally before committing and pushing the changes.
 
 ## Development with VS Code DevContainer
 
@@ -104,4 +118,4 @@ To use it:
 
 ---
 
-*This README was generated with [Claude Code](https://console.anthropic.com/claude/cli) (Claude 3.7) on February 26, 2025.*
+*This README was updated with [Claude Code](https://console.anthropic.com/claude/cli) (Claude 3.7) on February 26, 2025.*
