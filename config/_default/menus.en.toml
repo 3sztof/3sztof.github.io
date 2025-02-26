@@ -1,0 +1,47 @@
+[[main]]
+name = "Posts"
+pageRef = "posts"
+identifier = "9ZEIG7GoKx"
+weight = 9998
+
+[[main]]
+name = "Tags"
+pageRef = "tags"
+identifier = "9ZEIG7foKx"
+weight = 9999
+
+# [[main]]
+# name = "sub-menu 1"
+# parent = "Blog"
+# pageRef = "samples"
+# weight = 20
+
+[[main]]
+pre = "linkedin"
+url = "https://www.linkedin.com/in/3sztof/"
+identifier = "dYA273SzWc"
+weight = 1
+
+[[main]]
+pre = "github"
+url = "https://github.com/3sztof"
+identifier = "CldNYTp7MY"
+weight = 2
+
+[[main]]
+pre = "envelope"
+url = "mailto:krzysztof.wilczynski@protonmail.com"
+identifier = "GN370nTLK7"
+weight = 3
+
+[[footer]]
+name = "About This Site"
+pageRef = "about/page"
+identifier = "9ZEIG7GoKx"
+weight = 9999
+
+[[footer]]
+name = "About Me"
+pageRef = "about/author/"
+identifier = "n0HQrcAxys"
+weight = 1

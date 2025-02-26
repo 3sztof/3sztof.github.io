@@ -1,0 +1,26 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Krzysztof's Site"
+
+[params]
+displayName = "EN"
+isoCode = "en"
+rtl = false
+dateFormat = "2 January 2006"
+logo = ""
+secondaryLogo = "."
+description = "Welcome to my website! I'm really happy you stopped by."
+
+[params.author]
+name = "Krzysztof Wilczynski"
+image = "author.jpeg"
+headline = "Professional syntax wrangler, recreational noise maker"
+bio = ""
+links = [
+    { linkedin = "https://www.linkedin.com/in/3sztof/" },
+    { github = "https://github.com/3sztof" },
+    { telegram = "https://t.me/k3sztof" },
+    { email = "mailto:krzysztof.wilczynski@protonmail.com" },
+]
