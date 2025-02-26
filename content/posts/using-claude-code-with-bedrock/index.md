@@ -6,8 +6,6 @@ description: "A guide to setting up and using Claude Code CLI with Amazon Bedroc
 tags: ["claude", "bedrock", "aws", "cli"]
 ---
 
-# Using Claude Code with Bedrock Backend
-
 > *Note: This entire blog post, including the thumbnail image, was generated using Claude Code CLI.*
 
 Claude Code is a powerful CLI tool that allows you to interact with Claude AI models directly from your terminal. This guide will walk you through setting up Claude Code to work with Amazon Bedrock as the backend provider.
