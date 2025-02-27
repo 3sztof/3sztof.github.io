@@ -12,66 +12,131 @@ Claude Code is a powerful CLI tool that allows you to interact with Claude AI mo
 
 ## Prerequisites
 
-- AWS account with Bedrock access
-- Claude Code CLI installed
-- AWS CLI configured with appropriate permissions
-- Access to Anthropic Claude 3.7 enabled in Bedrock 
+- AWS account with [Bedrock access enabled](https://docs.aws.amazon.com/bedrock/latest/userguide/setting-up.html)
+- [Node.js (v14 or later) and npm](https://nodejs.org/en/download/) installed on your system
+- AWS CLI installed and [configured with appropriate permissions](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- Access to Anthropic Claude 3.7 in your AWS Bedrock account
 
 ## Setup Steps
 
 1. **Install Claude Code CLI**
 
+   Install the official Claude Code CLI tool from Anthropic:
+
    ```bash
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. **Configure AWS credentials**
+   You can verify the installation was successful by running:
 
-   Ensure your AWS credentials are properly configured:
+   ```bash
+   claude --version
+   ```
+
+   For detailed installation instructions, refer to the [official Claude Code documentation](https://docs.anthropic.com/claude/docs/claude-code).
+
+2. **Configure AWS Credentials**
+
+   Ensure your AWS credentials are properly configured with permissions for Bedrock:
 
    ```bash
    aws configure
    ```
 
-3. **Enable Claude 3.7 model access in Bedrock**
+   You'll need to enter:
+   - AWS Access Key ID
+   - AWS Secret Access Key
+   - Default region name (use a region where Claude 3.7 is available, like `us-east-1`)
+   - Default output format (recommended: `json`)
 
+   For IAM permissions, your user/role needs:
+   - `bedrock:InvokeModel`
+   - `bedrock:ListFoundationModels`
+   
+   For detailed AWS credentials setup, see the [AWS CLI Configuration Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
-   1. Navigate to the AWS Bedrock console
-      - Go to https://console.aws.amazon.com/bedrock
-      - Ensure you're in a region, where Claude 3.7 is available (eg. us-east-1)
+3. **Enable Claude 3.7 Model Access in Bedrock**
 
-   2. Click on "Model access" in the left navigation panel
+   1. Navigate to the [AWS Bedrock console](https://console.aws.amazon.com/bedrock) in a [supported region](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-regions.html) (e.g., `us-east-1`)
 
-   3. Click "Manage model access"
+   2. Complete Bedrock onboarding if needed (accept terms and conditions)
 
-   4. Find "Anthropic" in the model providers list
+   3. Go to "Model access" → "Manage model access"
 
-   5. Check the box for "Claude 3.7 Sonnet" (anthropic.claude-3-7-sonnet-20250219-v1:0)
+   4. Find "Anthropic" and check "Claude 3.7 Sonnet" (anthropic.claude-3-7-sonnet-20250219-v1:0)
+   
+   5. Click "Request model access" and "Save changes"
 
-   6. Click "Save changes"
+   6. Wait a few minutes for access to be granted (status will change from "Pending" to "Access granted")
 
-   7. Wait for model access to be granted
-      - Status will change from "Pending" to "Access granted"
-      - This typically takes a few minutes
-      - You'll receive an email confirmation when access is granted
+   You can verify access using the AWS CLI:
+   ```bash
+   aws bedrock list-foundation-models --region us-east-1 | grep anthropic.claude-3-7-sonnet
+   ```
 
-   Note: If you don't see Claude 3.7 listed or encounter issues:
-   - Verify your AWS account has completed Bedrock access onboarding
-   - Check if your account has any service quotas or restrictions
-   - Contact AWS Support if you need additional assistance
+   If you encounter issues, check that your account has completed [Bedrock onboarding](https://docs.aws.amazon.com/bedrock/latest/userguide/setting-up.html#setting-up-manage-access) and review [service quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html) in your selected region.
 
-4. **Set environment variables**
+4. **Set Environment Variables**
 
-   Configure the following environment variables for optimal Bedrock integration:
+   To tell Claude Code to use Bedrock as its backend, you need to set some environment variables. These are special settings that tell the software which model to use and where to find it.
+
+   ### Quick Start (Temporary Use)
+
+   If you just want to try Claude Code with Bedrock quickly, you can run these commands in your terminal before using Claude:
 
    ```bash
-   # Claude CLI
+   # Copy and paste these lines into your terminal
    export DISABLE_PROMPT_CACHING=1 
    export ANTHROPIC_MODEL='anthropic.claude-3-7-sonnet-20250219-v1:0'
    export CLAUDE_CODE_USE_BEDROCK=1
    ```
 
-   For persistent use, add these exports to your shell configuration file (`~/.bashrc`, `~/.zshrc`, or `~/.config/fish/config.fish` depending on your shell).
+   After running these commands in your terminal window, you can immediately use Claude Code with Bedrock by running `claude` commands in that same terminal window. However, these settings will only last until you close that terminal window.
+
+   ### For US East Region (Virginia)
+   
+   If you're using the US East region (which is the default for many AWS accounts):
+
+   ```bash
+   export AWS_REGION='us-east-1'
+   ```
+
+   ### For Permanent Configuration
+
+   To avoid having to set these variables every time, you can make them permanent by adding them to your shell's configuration file:
+
+   1. Open your shell configuration file in a text editor:
+      - For Mac/Linux with Bash: `nano ~/.bashrc` or `nano ~/.bash_profile`
+      - For Mac with Zsh: `nano ~/.zshrc`
+      - For Fish shell: `nano ~/.config/fish/config.fish`
+
+   2. Add these lines at the end of the file:
+      ```bash
+      # Claude Code Bedrock configuration
+      export DISABLE_PROMPT_CACHING=1 
+      export ANTHROPIC_MODEL='anthropic.claude-3-7-sonnet-20250219-v1:0'
+      export CLAUDE_CODE_USE_BEDROCK=1
+      export AWS_REGION='us-east-1'  # Change this if using a different region
+      ```
+
+   3. Save the file and exit the editor
+      - In nano: Press `Ctrl+O` to save, then `Enter`, then `Ctrl+X` to exit
+
+   4. Apply the changes by reloading your configuration:
+      ```bash
+      # For bash (choose one depending on which file you edited)
+      source ~/.bashrc
+      # OR
+      source ~/.bash_profile
+      
+      # For zsh
+      source ~/.zshrc
+      
+      # For fish
+      source ~/.config/fish/config.fish
+      ```
+
+   After completing these steps, Claude Code will use Bedrock in all your terminal sessions.
 
 ## Using Claude Code with Bedrock
 
@@ -122,13 +187,54 @@ claude --context terraform.tf "Optimize this Terraform configuration"
 
 ## Troubleshooting
 
-If you encounter issues, verify:
+If you encounter issues with Claude Code using Bedrock, try these troubleshooting steps:
 
-1. Your AWS credentials have Bedrock access permissions
-2. The Claude model you selected is enabled in your Bedrock account
-3. Your AWS region is configured correctly
+### Connection and Authentication Issues
 
-For more information, check the [Claude Code documentation](https://docs.anthropic.com/claude/docs/claude-code) or the [AWS Bedrock documentation](https://docs.aws.amazon.com/bedrock/).
+1. **Verify AWS Credentials and Permissions**
+   ```bash
+   # Check if your credentials are properly configured
+   aws sts get-caller-identity
+   
+   # Verify you have Bedrock access
+   aws bedrock list-foundation-models --region us-east-1
+   ```
+
+2. **Confirm Model Access**
+   ```bash
+   # Check if Claude 3.7 is available to your account
+   aws bedrock list-foundation-models --query "modelSummaries[?modelId=='anthropic.claude-3-7-sonnet-20250219-v1:0']" --region us-east-1
+   ```
+
+3. **Region Configuration**
+   - Ensure your `AWS_REGION` environment variable (or default region) is set to a region where Claude 3.7 is available
+   - Verify model availability in your region in the [Bedrock service endpoints documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints-service.html)
+
+### Common Error Messages
+
+- **"AccessDeniedException"** - Check IAM permissions; your user/role needs `bedrock:InvokeModel` permission
+- **"ValidationException: Model not found"** - Verify model ID and region compatibility
+- **"ResourceNotFoundException"** - Ensure you've completed model access approval
+- **"ThrottlingException"** - You may have exceeded your quota; check your [Bedrock quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html)
+
+### Environment Debugging
+
+Run Claude Code with debug logging enabled:
+
+```bash
+DEBUG=* claude "Your prompt here"
+```
+
+For persistent issues, you can check AWS CloudTrail logs to see if your Bedrock API calls are being made and any errors they're returning:
+
+```bash
+aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=InvokeModel
+```
+
+For more comprehensive troubleshooting and documentation:
+- [Claude Code documentation](https://docs.anthropic.com/claude/docs/claude-code)
+- [AWS Bedrock documentation](https://docs.aws.amazon.com/bedrock/)
+- [AWS Bedrock troubleshooting guide](https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting.html)
 
 ## Meta: How This Post Was Created
 
