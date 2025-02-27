@@ -15,6 +15,7 @@ Claude Code is a powerful CLI tool that allows you to interact with Claude AI mo
 - AWS account with Bedrock access
 - Claude Code CLI installed
 - AWS CLI configured with appropriate permissions
+- Access to Anthropic Claude 3.7 enabled in Bedrock 
 
 ## Setup Steps
 
@@ -32,15 +33,34 @@ Claude Code is a powerful CLI tool that allows you to interact with Claude AI mo
    aws configure
    ```
 
-   2.5. **For AWS employees using Isengard**
+3. **Enable Claude 3.7 model access in Bedrock**
 
-   If you're an Amazon/AWS employee using Isengard accounts, you can set your credentials with:
 
-   ```bash
-   isengardcli assume
-   ```
+   1. Navigate to the AWS Bedrock console
+      - Go to https://console.aws.amazon.com/bedrock
+      - Ensure you're in a region, where Claude 3.7 is available (eg. us-east-1)
 
-3. **Set environment variables**
+   2. Click on "Model access" in the left navigation panel
+
+   3. Click "Manage model access"
+
+   4. Find "Anthropic" in the model providers list
+
+   5. Check the box for "Claude 3.7 Sonnet" (anthropic.claude-3-7-sonnet-20250219-v1:0)
+
+   6. Click "Save changes"
+
+   7. Wait for model access to be granted
+      - Status will change from "Pending" to "Access granted"
+      - This typically takes a few minutes
+      - You'll receive an email confirmation when access is granted
+
+   Note: If you don't see Claude 3.7 listed or encounter issues:
+   - Verify your AWS account has completed Bedrock access onboarding
+   - Check if your account has any service quotas or restrictions
+   - Contact AWS Support if you need additional assistance
+
+4. **Set environment variables**
 
    Configure the following environment variables for optimal Bedrock integration:
 
