@@ -14,17 +14,25 @@ This website is open-source and available on GitHub at [3sztof/3sztof.github.io]
 
 ### Option 1: Opening a GitHub Issue
 
-The easiest way to suggest changes is by opening a GitHub issue:
+The easiest way to suggest changes is by opening a GitHub issue. You can use our issue templates to make the process easier:
+
+#### Quick Links to Create an Issue:
+
+- [📝 Suggest Content Change or Correction](https://github.com/3sztof/3sztof.github.io/issues/new?assignees=&labels=content&projects=&template=content-suggestion.md&title=%5BCONTENT%5D+)
+- [🐛 Report a Bug or Display Issue](https://github.com/3sztof/3sztof.github.io/issues/new?assignees=&labels=bug&projects=&template=bug-report.md&title=%5BBUG%5D+)
+- [🆓 Open a Blank Issue](https://github.com/3sztof/3sztof.github.io/issues/new)
+
+#### Manual Process:
 
 1. **Go to the repository**: Visit [https://github.com/3sztof/3sztof.github.io](https://github.com/3sztof/3sztof.github.io)
 
 2. **Navigate to Issues**: Click on the "Issues" tab near the top of the repository page
 
-3. **Create a new issue**: Click the green "New issue" button
+3. **Create a new issue**: Click the green "New issue" button and select an appropriate template
 
 4. **Provide details**: 
    - Use a clear, descriptive title 
-   - In the description, be specific about what you'd like to change
+   - Fill in the template with specific information about your suggestion
    - Include the URL of the page you're referring to
    - For content corrections, include both the current text and your suggested revision
    - You can use Markdown formatting in your issue description
@@ -70,7 +78,9 @@ If you're comfortable with Git and Hugo, you can directly propose changes by:
    git push origin fix-typo
    ```
 
-6. **Create a pull request**: Go to the original repository and click "New pull request", then select your branch
+6. **Create a pull request**: Go to the [original repository](https://github.com/3sztof/3sztof.github.io/compare) and click "New pull request", then select your branch
+
+   The pull request will automatically use our [PR template](https://github.com/3sztof/3sztof.github.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md) to help you provide all necessary information
 
 ## Content Guidelines
 
