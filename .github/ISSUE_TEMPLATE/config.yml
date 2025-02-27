@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Website Repository
+    url: https://github.com/3sztof/3sztof.github.io
+    about: Check out the repository for more information about the website
+  - name: Suggest Edits Page
+    url: https://3sztof.github.io/about/suggest-edits/
+    about: Visit the Suggest Edits page for detailed instructions on contributing
