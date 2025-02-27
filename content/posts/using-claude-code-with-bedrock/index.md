@@ -215,7 +215,15 @@ If you encounter issues with Claude Code using Bedrock, try these troubleshootin
 - **"AccessDeniedException"** - Check IAM permissions; your user/role needs `bedrock:InvokeModel` permission
 - **"ValidationException: Model not found"** - Verify model ID and region compatibility
 - **"ResourceNotFoundException"** - Ensure you've completed model access approval
-- **"ThrottlingException"** - You may have exceeded your quota; check your [Bedrock quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html)
+- **"ThrottlingException"** or **"429 Too many tokens, please wait before trying again."** - You may have exceeded your quota or rate limit. When this happens, the Claude CLI will display a message saying "429 Too many tokens, please wait before trying again." This is because AWS Bedrock enforces rate limits on API requests to prevent abuse and ensure fair resource allocation across all users.
+
+  **What's happening:** AWS Bedrock has token rate limits that restrict how many tokens you can process within a specific timeframe (usually per minute). When you exceed this limit, AWS returns a 429 error code (Too Many Requests), which Claude CLI then displays as a user-friendly message.
+  
+  **How to fix it:**
+  - Wait a few minutes before trying again to allow your token quota to refresh
+  - For production applications, implement exponential backoff and retry logic
+  - If you consistently hit limits, request a [quota increase through the AWS Service Quotas console](https://console.aws.amazon.com/servicequotas/)
+  - Check your [Bedrock quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html) to understand your current limits
 
 ### Environment Debugging
 
