@@ -9,7 +9,7 @@ disableTextInHeader = false
 giteaDefaultServer = "https://git.fsfe.org"
 forgejoDefaultServer = "https://v8.next.forgejo.org"
 smartTOC = true
-mainSections = ["posts"]
+mainSections = [ "posts" ]
 
 [header]
 layout = "fixed-fill-blur"
@@ -96,6 +96,13 @@ cardView = false
 cardViewScreenWidth = false
 
 [firebase]
+firebase.apiKey = "AIzaSyC1Y4jJzt8_NTyRYWesmTHxmBCjG4ITams"
+firebase.authDomain = "github-io-personal-page.firebaseapp.com"
+firebase.projectId = "github-io-personal-page"
+firebase.storageBucket = "github-io-personal-page.firebasestorage.app"
+firebase.messagingSenderId = "941309870811"
+firebase.appId = "1:941309870811:web:abf616c88f2efe0158c2fe"
+firebase.measurementId = "G-811WVKSKN1"
 
 [fathomAnalytics]
 
@@ -104,6 +111,11 @@ cardViewScreenWidth = false
 [selineAnalytics]
 
 [buymeacoffee]
+identifier = "3sztof"
+globalWidget = true
+# globalWidgetMessage = ""
+globalWidgetColor = ""
+globalWidgetPosition = "Right"
 
 [verification]
 
