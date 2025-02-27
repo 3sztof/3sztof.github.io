@@ -38,10 +38,16 @@ weight = 3
 name = "About This Site"
 pageRef = "about/page"
 identifier = "9ZEIG7GoKx"
-weight = 9999
+weight = 2
 
 [[footer]]
 name = "About Me"
 pageRef = "about/author/"
 identifier = "n0HQrcAxys"
 weight = 1
+
+[[footer]]
+name = "Suggest an Edit"
+pageRef = "suggest-edits"
+identifier = "WjOIEnILLW"
+weight = 9999
