@@ -1,0 +1,6 @@
+<!-- Custom CSS for contrast fixes -->
+{{ $custom := resources.Get "css/custom.css" }}
+{{ if $custom }}
+  {{ $custom = $custom | resources.Minify | resources.Fingerprint "sha512" }}
+  <link rel="stylesheet" href="{{ $custom.RelPermalink }}" integrity="{{ $custom.Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
