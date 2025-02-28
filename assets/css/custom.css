@@ -1,0 +1,10 @@
+/* Custom styles to improve text contrast */
+.hero-name {
+  /* Use a darker color that works in both light and dark modes */
+  color: #1a1a1a !important; /* Dark gray for light mode */
+}
+
+/* Dark mode override */
+.dark .hero-name {
+  color: #ffffff !important; /* White for dark mode */
+}
