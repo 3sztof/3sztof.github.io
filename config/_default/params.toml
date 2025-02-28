@@ -34,7 +34,7 @@ homepageImage = "default"
 
 [article]
 showDate = true
-showViews = false
+showViews = true
 showLikes = true
 showDateOnlyInArticle = false
 showDateUpdated = false
@@ -63,8 +63,8 @@ layoutBackgroundBlur = true
 layoutBackgroundHeaderSpace = true
 showBreadcrumbs = false
 showSummary = false
-showViews = false
-showLikes = false
+showViews = true
+showLikes = true
 showTableOfContents = false
 showCards = false
 orderByWeight = false
@@ -80,16 +80,16 @@ excludedKinds = [ "taxonomy", "term" ]
 showTermCount = true
 showHero = false
 showBreadcrumbs = false
-showViews = false
-showLikes = false
+showViews = true
+showLikes = true
 showTableOfContents = false
 cardView = false
 
 [term]
 showHero = false
 showBreadcrumbs = false
-showViews = false
-showLikes = false
+showViews = true
+showLikes = true
 showTableOfContents = true
 groupByYear = false
 cardView = false
