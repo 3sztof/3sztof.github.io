@@ -3,7 +3,7 @@ title: "About This Site"
 date: 2025-02-27
 draft: false
 description: "How this site is built and deployed"
-tags: ["about", "hugo", "blowfish"]
+tags: ["about", "hugo", "blowfish", "github", "static-site", "nodejs", "github-actions", "web-development"]
 ---
 
 This page was made with [Hugo](https://gohugo.io/) and [Blowfish](https://blowfish.page/), and is deployed on [GitHub Pages](https://pages.github.com/).

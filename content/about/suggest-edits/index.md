@@ -3,7 +3,7 @@ title: "Suggest Edits"
 date: 2025-02-27
 draft: false
 description: "How to suggest edits and improvements for this website"
-tags: ["about", "github", "contributions", "edit"]
+tags: ["about", "github", "contributions", "edit", "open-source", "pull-request", "collaboration", "git"]
 ---
 
 ## Help Improve This Website

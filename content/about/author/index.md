@@ -3,7 +3,7 @@ title: "About Me"
 date: 2025-02-21
 draft: false
 description: "About the author - Krzysztof Wilczyński"
-tags: ["about", "author"]
+tags: ["about", "author", "aws", "devops", "cloud", "certifications", "professional-services"]
 ---
 
 Hey, my name is Krzysztof! You can call me Chris if it’s easier for you - Krzysztof is just 'Christopher' written in a funky Polish way. 😉
