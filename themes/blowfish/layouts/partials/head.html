@@ -136,13 +136,13 @@
   <script>
 
     const firebaseConfig = {
-      apiKey: {{ $.Site.Params.firebase.apiKey }},
-      authDomain: {{ $.Site.Params.firebase.authDomain }},
-      projectId: {{ $.Site.Params.firebase.projectId }},
-      storageBucket: {{ $.Site.Params.firebase.storageBucket }},
-      messagingSenderId: {{ $.Site.Params.firebase.messagingSenderId }},
-      appId: {{ $.Site.Params.firebase.appId }},
-      measurementId: {{ $.Site.Params.firebase.measurementId }}
+      apiKey: "{{ $.Site.Params.firebase.apiKey }}",
+      authDomain: "{{ $.Site.Params.firebase.authDomain }}",
+      projectId: "{{ $.Site.Params.firebase.projectId }}",
+      storageBucket: "{{ $.Site.Params.firebase.storageBucket }}",
+      messagingSenderId: "{{ $.Site.Params.firebase.messagingSenderId }}",
+      appId: "{{ $.Site.Params.firebase.appId }}",
+      measurementId: "{{ $.Site.Params.firebase.measurementId }}"
     };
 
     var app = firebase.initializeApp(firebaseConfig);
