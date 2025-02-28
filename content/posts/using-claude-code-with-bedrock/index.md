@@ -10,6 +10,14 @@ tags: ["claude", "bedrock", "aws", "cli"]
 
 Claude Code is a powerful CLI tool that allows you to interact with Claude AI models directly from your terminal. This guide will walk you through setting up Claude Code to work with Amazon Bedrock as the backend provider.
 
+## What is Claude Code?
+
+Claude Code is a powerful CLI tool that brings Claude's AI capabilities to your terminal. It provides an interactive coding assistant that understands your local files and can help with various software engineering tasks.
+
+Check out this video for a quick overview of Claude Code in action:
+
+{{< youtube AJpK3YTTKZ4 >}}
+
 ## Prerequisites
 
 - AWS account with [Bedrock access enabled](https://docs.aws.amazon.com/bedrock/latest/userguide/setting-up.html)
@@ -140,42 +148,22 @@ Claude Code is a powerful CLI tool that allows you to interact with Claude AI mo
 
 ## Using Claude Code with Bedrock
 
-Claude Code has access to the directory where it's executed, allowing it to analyze your project files, understand your codebase, and assist with development tasks. It can guide you through complex processes by suggesting next steps and requesting permission before running commands that modify your files or system.
+Claude Code has access to the directory where it's executed, allowing it to analyze your project files, understand your codebase, and assist with development tasks. It guides you through complex processes by suggesting next steps and requesting permission before running commands that modify your files or system.
 
-This means you can use Claude to help build entire projects, solve complex coding challenges, or fix bugs by giving it context about your codebase. Claude will analyze the relevant files and provide step-by-step assistance, asking for confirmation before taking actions that might alter your system or files.
-
-Once configured, you can start using Claude Code with commands like:
+Once configured with Bedrock, you can start using Claude Code with commands like:
 
 ```bash
+# Run Claude in interactive mode (most useful way to use Claude Code)
+claude
+
 # Ask Claude a question
 claude "How do I optimize Docker images?"
 
-# Run Claude in interactive mode
-claude
-
-# Run Claude with context from a specific file
+# Run Claude with context from specific files
 claude --context path/to/file.py "Explain this code"
 
-# Use Claude to help debug an error message
-claude --context error_log.txt "How do I fix this error?"
-
-# Generate code based on requirements
-claude "Write a Python script that reads CSV files and outputs JSON"
-
-# Review and explain complex code
-claude --context complex_module.js "Explain how this module works"
-
-# Analyze logs or data
-claude --context application.log "Summarize these logs and identify issues"
-
-# Help with Git operations
-claude "How do I rebase my feature branch onto main and resolve conflicts?"
-
 # Multiple contexts for more comprehensive analysis
-claude --context file1.js --context file2.js "How do these two files interact?"
-
-# Use Claude for infrastructure as code help
-claude --context terraform.tf "Optimize this Terraform configuration"
+claude --context file1.js --context file2.js "How do these components interact?"
 ```
 
 ## Benefits of Using Bedrock Backend
