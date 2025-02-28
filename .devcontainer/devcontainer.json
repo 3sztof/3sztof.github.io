@@ -6,20 +6,51 @@
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	"features": {
 		"ghcr.io/devcontainers/features/hugo:1": {},
-		"ghcr.io/devcontainers/features/node:1": {}
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/phil-bell/devcontainer-features/antigen:1": {
+			"theme": "romkatv/powerlevel10k",
+			"bundles": [
+				"zsh-users/zsh-syntax-highlighting",
+				"zsh-users/zsh-completions"
+			]
+		}
 	},
 	
+	"customizations": {
+		"vscode": {
+		"settings": {
+			"workbench.colorTheme": "Night Owl",
+			"editor.formatOnSave": true,
+			"terminal.integrated.defaultProfile.linux": "zsh",
+			"terminal.integrated.profiles.linux": {
+				"zsh": {
+					"path": "/usr/bin/zsh"
+				}
+			}
+		},
+		"extensions": [
+			"sdras.night-owl",
+			"natqe.reload",
+			"zainchen.json",
+			"dbaeumer.vscode-eslint",
+			"tamasfe.even-better-toml",
+			"amazonwebservices.amazon-q-vscode"
+		]
+		}
+	},
+
 	// Install Blowfish CLI
-	"postCreateCommand": "npm install -g blowfish-tools",
+	"postCreateCommand": {
+		"copy-zshrc": "cp /workspaces/${localWorkspaceFolderBasename}/.devcontainer/.zshrc ~/.zshrc",
+    	"copy-p10kzsh": "cp /workspaces/${localWorkspaceFolderBasename}/.devcontainer/.p10k.zsh ~/.p10k.zsh",
+		"install-blowfish": "npm install -g blowfish-tools"
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [1313],
-
-	// Configure tool-specific properties.
-	// "customizations": {},
+	"forwardPorts": [1313]
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
