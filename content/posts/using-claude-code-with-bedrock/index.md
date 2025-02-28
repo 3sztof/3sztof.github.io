@@ -3,7 +3,7 @@ title: "Using Claude Code with Bedrock Backend"
 date: 2025-02-26
 draft: false
 description: "A guide to setting up and using Claude Code CLI with Amazon Bedrock backend"
-tags: ["claude", "bedrock", "aws", "cli", "terminal", "generative-ai", "nodejs", "troubleshooting"]
+tags: ["claude", "anthropic", "bedrock", "aws", "cli", "generative-ai", "programming"]
 ---
 
 > *Note: This entire blog post, including the thumbnail image, was generated using Claude Code CLI.*
