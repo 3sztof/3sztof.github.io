@@ -1,5 +1,5 @@
 ---
-title: "Twitch Stream Guest: Cloud with AWS Poland"
+title: "Twitch Stream Speaker: 'Czwartkowy Cloud-Tech z AWS Polska' [PL]"
 date: 2022-03-03
 description: "Czwartkowy CloudTech AWS stream on Twitch & YouTube - public speaking engagement"
 tags: ["AWS", "Cloud", "Infrastructure", "DevOps", "IaC", "CDK"]
