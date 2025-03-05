@@ -14,3 +14,6 @@ hugo_stats.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# VSCode
+.vscode/
