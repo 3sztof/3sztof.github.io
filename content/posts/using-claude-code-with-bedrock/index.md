@@ -122,7 +122,7 @@ Check out this video for a quick overview of Claude Code in action:
       ```bash
       # Claude Code Bedrock configuration
       export DISABLE_PROMPT_CACHING=1 
-      export ANTHROPIC_MODEL='anthropic.claude-3-7-sonnet-20250219-v1:0'
+      export ANTHROPIC_MODEL='us.anthropic.claude-3-7-sonnet-20250219-v1:0'
       export CLAUDE_CODE_USE_BEDROCK=1
       export AWS_REGION='us-east-1'  # Change this if using a different region
       ```
