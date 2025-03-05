@@ -1,20 +1,26 @@
 [[main]]
-name = "Posts"
+name = "Blog"
 pageRef = "posts"
 identifier = "9ZEIG7GoKx"
-weight = 9998
+weight = 9997
 
 [[main]]
 name = "Tags"
+parent = "More"
 pageRef = "tags"
-identifier = "9ZEIG7foKx"
-weight = 9999
+weight = 1
 
-# [[main]]
-# name = "sub-menu 1"
-# parent = "Blog"
-# pageRef = "samples"
-# weight = 20
+[[main]]
+name = "Posts"
+parent = "More"
+pageRef = "posts"
+weight = 2
+
+[[main]]
+name = "Speaking"
+parent = "More"
+pageRef = "speaking"
+weight = 3
 
 [[main]]
 pre = "linkedin"
