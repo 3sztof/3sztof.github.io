@@ -23,6 +23,12 @@ pageRef = "speaking"
 weight = 3
 
 [[main]]
+name = "Music"
+parent = "More"
+pageRef = "music"
+weight = 4
+
+[[main]]
 pre = "linkedin"
 url = "https://www.linkedin.com/in/3sztof/"
 identifier = "dYA273SzWc"
