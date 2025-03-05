@@ -9,7 +9,7 @@ disableTextInHeader = false
 giteaDefaultServer = "https://git.fsfe.org"
 forgejoDefaultServer = "https://v8.next.forgejo.org"
 smartTOC = true
-mainSections = ["posts"]
+mainSections = ["posts", "speaking"]
 
 [header]
 layout = "fixed-fill-blur"
