@@ -1,7 +1,7 @@
 ---
 title: "Speaker: EuroPython 2025"
-date: 2025-04-08
-description: "Presenting 'Async Python: Concurrency Without the Headaches' at Europe's largest Python conference in Prague."
+date: 2025-07-17
+description: "Presented 'Async Python: Concurrency Without the Headaches' at Europe's largest Python conference in Prague."
 tags: ["Python", "Async", "Programming", "Conference", "EuroPython", "Prague"]
 ---
 
@@ -9,15 +9,19 @@ tags: ["Python", "Async", "Programming", "Conference", "EuroPython", "Prague"]
 
 - **Topic**: Async Python: Concurrency Without the Headaches
 - **Language**: English
+- **Date**: July 17, 2025
+- **Co-presenter**: Mateusz Zaremba, Application Architect at Ørsted
 
-I'll be presenting on asynchronous programming in Python at EuroPython 2025 in Prague. My session will demystify core async concepts like `async`, `await`, and the event loop, making them accessible to developers at all levels. The talk will cover the `asyncio` ecosystem, common patterns like `asyncio.gather` and task coordination, and demonstrate practical implementations for concurrent API calls and database operations. I'll also introduce **Asyncer**, a modern library that simplifies async workflows for developers looking to enhance their async skills.
+I presented on asynchronous programming in Python at EuroPython 2025 in Prague alongside my colleague Mateusz Zaremba. Our session demystified core async concepts like `async`, `await`, and the event loop, making them accessible to developers at all levels. The talk covered the `asyncio` ecosystem, common patterns like `asyncio.gather` and task coordination, and demonstrated practical implementations for concurrent API calls and database operations. We also introduced **Asyncer**, a modern library that simplifies async workflows for developers looking to enhance their async skills.
 
-The presentation will include:
+The presentation included:
 - Clear explanations of why and when to use async in Python
 - Visual comparisons of synchronous vs. asynchronous workflows
 - Live coding examples of common async patterns
 - Real-world use cases for web applications, database queries, and task scheduling
 - Tips on integrating sync and async code without blocking the event loop
+
+For a detailed summary of the presentation, including key takeaways and resources, check out my [blog post on Async Python Concurrency](/posts/async-python-concurrency/).
 
 ## Event
 
@@ -28,7 +32,7 @@ The presentation will include:
 
 ## More
 
-EuroPython is the world's oldest volunteer-led Python conference, bringing together over 1,300 Python enthusiasts from around the globe. The 2025 edition in Prague will feature:
+EuroPython is the world's oldest volunteer-led Python conference, bringing together over 1,300 Python enthusiasts from around the globe. The 2025 edition in Prague featured:
 
 - 180+ expert speakers
 - 7 days of Python content
@@ -36,4 +40,4 @@ EuroPython is the world's oldest volunteer-led Python conference, bringing toget
 - Workshops, tutorials, and open spaces
 - Networking opportunities and social events
 
-This prestigious event offers an excellent opportunity to connect with the global Python community and stay updated on the latest developments in the Python ecosystem.
+This prestigious event offered an excellent opportunity to connect with the global Python community and stay updated on the latest developments in the Python ecosystem.
