@@ -70,3 +70,29 @@ This site is deployed using GitHub Pages with a GitHub Actions workflow. The sou
 For a complete example, check out the [workflow configuration in this site's repository](https://github.com/3sztof/3sztof.github.io).
 
 This setup provides a smooth workflow where you only need to focus on creating content in the `main` branch, and the deployment happens automatically whenever you push changes.
+
+## Customizations
+
+This site includes several customizations on top of the standard Blowfish theme:
+
+### Animated Background
+
+The homepage features a custom animated background using a modified `traffic.svg` with colors matched to the Marvel theme palette - muted blues, soft golds, and occasional pinks.
+
+### Hero Layout with Background
+
+A custom `hero.html` partial combines the hero card layout with an animated full-page background, giving the best of both layouts.
+
+### Keyboard Shortcuts
+
+- **Ctrl+K / Cmd+K**: Open search (in addition to the default `/` key)
+- **Esc**: Close search
+- **Arrow keys**: Navigate search results
+
+### Theme as Git Submodule
+
+The Blowfish theme is managed as a Git submodule rather than copied directly into the repository, making updates easier and keeping the repo clean.
+
+## Built with AI Assistance
+
+Much of this site's configuration, customization, and content was developed with the help of [Opencode](https://github.com/opencode-ai/opencode) running Claude models on AWS Bedrock. The AI assisted with theme customization, layout modifications, SVG color adjustments, Hugo template overrides, and content drafting.
