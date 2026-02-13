@@ -30,7 +30,7 @@ showMoreLinkDest = "/all/"
 cardView = true
 cardViewScreenWidth = false
 layoutBackgroundBlur = true
-homepageImage = "default"
+homepageImage = "img/background.svg"
 
 [article]
 showDate = true
