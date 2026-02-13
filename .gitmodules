@@ -1,1 +1,5 @@
 # Theme is now included directly in the repository instead of as a submodule
+[submodule "themes/blowfish"]
+	path = themes/blowfish
+	url = https://github.com/nunocoracao/blowfish.git
+	branch = main
