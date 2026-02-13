@@ -1,12 +1,12 @@
 ---
 title: "Using Claude Code with Bedrock Backend"
-date: 2025-02-26
+date: 2026-02-13
 draft: false
 description: "A guide to setting up and using Claude Code CLI with Amazon Bedrock backend"
 tags: ["claude", "anthropic", "bedrock", "aws", "cli", "generative-ai", "programming"]
 ---
 
-> *Note: This entire blog post, including the thumbnail image, was generated using Claude Code CLI.*
+> **⚠️ Model IDs change frequently**: The model IDs and configuration in this guide reflect the state at the time of writing. Anthropic regularly releases new Claude versions on Bedrock. Always check the [AWS Bedrock supported models documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html) and [Bedrock model IDs reference](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html) for the most current model identifiers and regional availability.
 
 Claude Code is a powerful CLI tool that allows you to interact with Claude AI models directly from your terminal. This guide will walk you through setting up Claude Code to work with Amazon Bedrock as the backend provider.
 
@@ -23,7 +23,7 @@ Check out this video for a quick overview of Claude Code in action:
 - AWS account with [Bedrock access enabled](https://docs.aws.amazon.com/bedrock/latest/userguide/setting-up.html)
 - [Node.js (v14 or later) and npm](https://nodejs.org/en/download/) installed on your system
 - AWS CLI installed and [configured with appropriate permissions](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-- Access to Anthropic Claude 3.7 in your AWS Bedrock account
+- Access to Anthropic Claude models in your AWS Bedrock account (Claude Sonnet 4.5 recommended)
 
 ## Setup Steps
 
@@ -54,16 +54,18 @@ Check out this video for a quick overview of Claude Code in action:
    You'll need to enter:
    - AWS Access Key ID
    - AWS Secret Access Key
-   - Default region name (use a region where Claude 3.7 is available, like `us-east-1`)
+   - Default region name (use a region where Claude models are available, like `us-east-1`)
    - Default output format (recommended: `json`)
 
    For IAM permissions, your user/role needs:
    - `bedrock:InvokeModel`
+   - `bedrock:InvokeModelWithResponseStream`
    - `bedrock:ListFoundationModels`
+   - `bedrock:ListInferenceProfiles`
    
    For detailed AWS credentials setup, see the [AWS CLI Configuration Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
-3. **Enable Claude 3.7 Model Access in Bedrock**
+3. **Enable Claude Model Access in Bedrock**
 
    1. Navigate to the [AWS Bedrock console](https://console.aws.amazon.com/bedrock) in a [supported region](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-regions.html) (e.g., `us-east-1`)
 
@@ -71,7 +73,10 @@ Check out this video for a quick overview of Claude Code in action:
 
    3. Go to "Model access" → "Manage model access"
 
-   4. Find "Anthropic" and check "Claude 3.7 Sonnet" (anthropic.claude-3-7-sonnet-20250219-v1:0)
+   4. Find "Anthropic" and enable the Claude models you want to use:
+      - **Claude Sonnet 4.5** (recommended) - `global.anthropic.claude-sonnet-4-5-20250929-v1:0`
+      - **Claude Opus 4.6** (most capable) - for complex reasoning and agentic tasks
+      - **Claude Haiku 4.5** (fast/cheap) - `us.anthropic.claude-haiku-4-5-20251001-v1:0`
    
    5. Click "Request model access" and "Save changes"
 
@@ -79,7 +84,7 @@ Check out this video for a quick overview of Claude Code in action:
 
    You can verify access using the AWS CLI:
    ```bash
-   aws bedrock list-foundation-models --region us-east-1 | grep anthropic.claude-3-7-sonnet
+   aws bedrock list-foundation-models --region us-east-1 | grep anthropic.claude
    ```
 
    If you encounter issues, check that your account has completed [Bedrock onboarding](https://docs.aws.amazon.com/bedrock/latest/userguide/setting-up.html#setting-up-manage-access) and review [service quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html) in your selected region.
@@ -94,8 +99,7 @@ Check out this video for a quick overview of Claude Code in action:
 
    ```bash
    # Copy and paste these lines into your terminal
-   export DISABLE_PROMPT_CACHING=1 
-   export ANTHROPIC_MODEL='us.anthropic.claude-3-7-sonnet-20250219-v1:0'
+   export ANTHROPIC_MODEL='global.anthropic.claude-sonnet-4-5-20250929-v1:0'
    export CLAUDE_CODE_USE_BEDROCK=1
    ```
 
@@ -107,6 +111,14 @@ Check out this video for a quick overview of Claude Code in action:
 
    ```bash
    export AWS_REGION='us-east-1'
+   ```
+
+   ### Optional: Configure Haiku Model
+
+   Claude Code uses a smaller/faster model for some operations. By default, it auto-selects the Haiku model, but you can manually specify it:
+
+   ```bash
+   export ANTHROPIC_SMALL_FAST_MODEL='us.anthropic.claude-haiku-4-5-20251001-v1:0'
    ```
 
    ### For Permanent Configuration
@@ -121,10 +133,11 @@ Check out this video for a quick overview of Claude Code in action:
    2. Add these lines at the end of the file:
       ```bash
       # Claude Code Bedrock configuration
-      export DISABLE_PROMPT_CACHING=1 
-      export ANTHROPIC_MODEL='us.anthropic.claude-3-7-sonnet-20250219-v1:0'
+      export ANTHROPIC_MODEL='global.anthropic.claude-sonnet-4-5-20250929-v1:0'
       export CLAUDE_CODE_USE_BEDROCK=1
       export AWS_REGION='us-east-1'  # Change this if using a different region
+      # Optional: explicitly set Haiku model version
+      # export ANTHROPIC_SMALL_FAST_MODEL='us.anthropic.claude-haiku-4-5-20251001-v1:0'
       ```
 
    3. Save the file and exit the editor
@@ -172,6 +185,52 @@ claude --context file1.js --context file2.js "How do these components interact?"
 - Cost management through AWS billing
 - Access control through IAM policies
 - Lower latency (depending on region configuration)
+- Integration with AWS Guardrails for content filtering
+
+## Alternative Authentication Methods
+
+### Using AWS SSO
+
+If your organization uses AWS SSO, you can configure Claude Code to automatically refresh credentials:
+
+1. Create or edit `~/.claude/settings.json`:
+   ```json
+   {
+     "awsAuthRefresh": "aws sso login --profile myprofile",
+     "env": {
+       "AWS_PROFILE": "myprofile"
+     }
+   }
+   ```
+
+2. Claude Code will automatically detect expired credentials and run the refresh command.
+
+### Using Bedrock API Keys (Simplified Auth)
+
+For simpler setups without full AWS CLI configuration, you can use Bedrock API Keys:
+
+```bash
+export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+export CLAUDE_CODE_USE_BEDROCK=1
+```
+
+This eliminates the need for AWS CLI configuration and is ideal for developers who only need Bedrock access.
+
+## Enterprise Features
+
+### AWS Guardrails Integration
+
+You can implement content filtering via Bedrock Guardrails by adding custom headers:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_CUSTOM_HEADERS": "X-Amzn-Bedrock-GuardrailIdentifier: your-guardrail-id\nX-Amzn-Bedrock-GuardrailVersion: 1"
+  }
+}
+```
+
+This is useful for compliance-focused organizations that need to filter or moderate AI responses.
 
 ## Troubleshooting
 
@@ -190,12 +249,12 @@ If you encounter issues with Claude Code using Bedrock, try these troubleshootin
 
 2. **Confirm Model Access**
    ```bash
-   # Check if Claude 3.7 is available to your account
-   aws bedrock list-foundation-models --query "modelSummaries[?modelId=='anthropic.claude-3-7-sonnet-20250219-v1:0']" --region us-east-1
+   # Check if Claude Sonnet 4.5 is available to your account
+   aws bedrock list-foundation-models --query "modelSummaries[?contains(modelId, 'claude')]" --region us-east-1
    ```
 
 3. **Region Configuration**
-   - Ensure your `AWS_REGION` environment variable (or default region) is set to a region where Claude 3.7 is available
+   - Ensure your `AWS_REGION` environment variable (or default region) is set to a region where Claude models are available
    - Verify model availability in your region in the [Bedrock service endpoints documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints-service.html)
 
 ### Common Error Messages
@@ -234,16 +293,8 @@ For more comprehensive troubleshooting and documentation:
 
 ## Meta: How This Post Was Created
 
-This entire blog post, including the featured image, was created using Claude Code CLI in interactive mode. Here's the process:
+This post was originally created using Claude Code CLI in interactive mode, shortly after Claude Code's initial release when there were no mature open-source alternatives. The initial content and featured image were generated entirely through AI-assisted conversation.
 
-1. The initial content was generated through a conversation with Claude Code, initiated with the prompt "let's add a blog entry describing how to use claude code with bedrock backend"
+Since then, the post has been significantly refactored and updated to reflect the latest model versions and configuration options.
 
-2. All modifications, refinements, and additions to the content were made solely through prompts to Claude Code - the author never directly edited any files
-
-3. The featured image was created entirely through Claude Code:
-   - Claude suggested ImageMagick commands to generate the base image
-   - It created a gradient background, added text elements, AWS Bedrock logo, and symbolic graphics
-   - Claude handled image resizing and optimization for web display
-   - All image manipulations were performed through commands suggested by Claude and executed with user permission
-
-This workflow demonstrates the power of Claude Code as a complete content creation assistant. The author provided only directional input through conversation, while Claude handled all file creation, editing, and image processing tasks. This showcases the practical application of AI-assisted content creation using Claude Code with the AWS Bedrock backend for production-ready output.
+**Author's note**: I have since migrated my AI coding workflow to [OpenCode](/posts/opencode-aws-bedrock-setup/) and [AWS Kiro](https://kiro.dev/) - both excellent alternatives that emerged after Claude Code's launch. This post remains relevant for those who prefer or need to use Claude Code with Bedrock.
