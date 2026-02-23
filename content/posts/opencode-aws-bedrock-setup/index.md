@@ -232,11 +232,18 @@ mkdir -p ~/.config/opencode/skills/my-skill
 ```
 
 Skills I currently have installed:
-
-- **hugo** - Static site generation with Hugo
-- **git-commit** - Conventional commit message formatting
-- **manimce-best-practices** - Manim animation library patterns
-- **obsidian** - Obsidian vault interaction
+| Skill | Source | Purpose |
+|-------|--------|---------|
+| **commit-approval** | custom | Always ask before committing - keeps you in control of git history |
+| **git-commit** | custom | Conventional commit message formatting |
+| **obsidian** | custom | Interact with Obsidian vault via MCP |
+| **aws-safe-ops** | custom | Require explicit approval before any destructive AWS operation |
+| **hugo** | `npx skills add` | Static site generation with Hugo + Tailwind |
+| **semantic-versioning** | `npx skills add` | Bump patch/minor/major versions on commit based on conventional commits |
+| **find-skills** | `npx skills add` | Discover and install skills from the skills.sh ecosystem |
+| **manimce-best-practices** | `npx skills add` | Manim Community Edition animation patterns |
+| **manim-composer** | `npx skills add` | Plan and compose Manim video scenes |
+| **manimgl-best-practices** | `npx skills add` | ManimGL (3Blue1Brown) animation patterns |
 
 ## Step 7: Create an AGENTS.md
 
