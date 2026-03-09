@@ -46,6 +46,17 @@ url = "mailto:krzysztof.wilczynski@protonmail.com"
 identifier = "GN370nTLK7"
 weight = 3
 
+[[main]]
+pre = "rss"
+url = "/index.xml"
+identifier = "RSS"
+weight = 4
+
+[[main]]
+name = "TIL"
+pageRef = "til"
+weight = 9998
+
 [[footer]]
 name = "About This Site"
 pageRef = "about/page"

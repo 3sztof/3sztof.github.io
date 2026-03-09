@@ -9,7 +9,7 @@ disableTextInHeader = false
 giteaDefaultServer = "https://git.fsfe.org"
 forgejoDefaultServer = "https://v8.next.forgejo.org"
 smartTOC = true
-mainSections = ["posts", "speaking", "music", "projects"]
+mainSections = ["posts", "speaking", "music", "projects", "til"]
 
 [header]
 layout = "fixed-fill-blur"
@@ -119,3 +119,6 @@ globalWidgetPosition = "Right"
 [verification]
 
 [rssnext]
+# To enable: sign up at https://follow.is, add your feed, then fill in feedId and userId
+# feedId = ""
+# userId = ""
