@@ -17,3 +17,7 @@ Thumbs.db
 
 # VSCode
 .vscode/
+
+# Local planning and notes (not for source control)
+.sisyphus/
+TODO.md
