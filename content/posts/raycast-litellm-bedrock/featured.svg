@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#ffffff"/>
+
+  <!-- Raycast box -->
+  <rect x="90" y="215" width="240" height="200" rx="16" fill="#FF6363"/>
+  <text x="210" y="296" font-family="ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,monospace" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle">Raycast</text>
+  <!-- Raycast lightning bolt icon (simplified) -->
+  <polygon points="225,318 200,345 215,345 190,372 220,372 205,399 235,360 218,360 243,333 225,333" fill="#ffffff" opacity="0.9"/>
+
+  <!-- Arrow 1 -->
+  <line x1="342" y1="315" x2="418" y2="315" stroke="#9ca3af" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="418,307 434,315 418,323" fill="#9ca3af"/>
+
+  <!-- LiteLLM box -->
+  <rect x="446" y="215" width="308" height="200" rx="16" fill="#1e293b"/>
+  <text x="600" y="296" font-family="ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,monospace" font-size="28" font-weight="700" fill="#f8fafc" text-anchor="middle">LiteLLM</text>
+  <text x="600" y="332" font-family="ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,monospace" font-size="16" font-weight="400" fill="#94a3b8" text-anchor="middle">proxy</text>
+  <!-- Simple terminal prompt -->
+  <text x="600" y="380" font-family="ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,monospace" font-size="22" font-weight="600" fill="#38bdf8" text-anchor="middle">OpenAI compat.</text>
+
+  <!-- Arrow 2 -->
+  <line x1="766" y1="315" x2="842" y2="315" stroke="#9ca3af" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="842,307 858,315 842,323" fill="#9ca3af"/>
+
+  <!-- AWS Bedrock box -->
+  <rect x="870" y="215" width="240" height="200" rx="16" fill="#232f3e"/>
+  <text x="990" y="290" font-family="'Arial','Helvetica Neue',sans-serif" font-size="22" font-weight="700" fill="#ff9900" text-anchor="middle">AWS</text>
+  <text x="990" y="322" font-family="'Arial','Helvetica Neue',sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">Bedrock</text>
+  <text x="990" y="368" font-family="ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,monospace" font-size="15" font-weight="400" fill="#94a3b8" text-anchor="middle">Claude models</text>
+
+  <!-- Bottom label -->
+  <text x="600" y="480" font-family="ui-monospace,'Cascadia Code','Source Code Pro',Menlo,Consolas,monospace" font-size="18" font-weight="400" fill="#9ca3af" text-anchor="middle">Raycast AI  ·  LiteLLM  ·  AWS Bedrock</text>
+</svg>
