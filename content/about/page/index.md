@@ -1,6 +1,6 @@
 ---
 title: "About This Site"
-date: 2025-02-27
+date: 2026-03-09
 draft: false
 description: "How this site is built and deployed"
 tags: ["about", "hugo", "blowfish", "github", "static-site", "nodejs", "github-actions", "web-development"]
@@ -96,3 +96,9 @@ The Blowfish theme is managed as a Git submodule rather than copied directly int
 ## Built with AI Assistance
 
 Much of this site's configuration, customization, and content was developed with the help of [Opencode](https://github.com/opencode-ai/opencode) running Claude models on AWS Bedrock. The AI assisted with theme customization, layout modifications, SVG color adjustments, Hugo template overrides, and content drafting.
+## Following This Site
+
+There are two ways to stay up to date with new posts:
+
+- **RSS feed** - available at [`/index.xml`](/index.xml) and linked in the footer. Works with any feed reader.
+- **Email subscription** - a subscription form powered by [Buttondown](https://buttondown.com/) is available in the footer of every page. Enter your email to receive new posts directly in your inbox.
