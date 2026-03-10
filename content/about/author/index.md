@@ -6,7 +6,9 @@ description: "About the author - Krzysztof Wilczyński"
 tags: ["about", "author", "aws", "devops", "cloud", "certifications", "professional-services"]
 ---
 
-Hey, my name is Krzysztof! You can call me Chris if it’s easier for you - Krzysztof is just 'Christopher' written in a funky Polish way. 😉
+Hey, my name is Krzysztof! You can call me Chris if it's easier for you - Krzysztof is just 'Christopher' written in a funky Polish way. 😉
+
+{{< icon "linkedin" >}} [LinkedIn](https://www.linkedin.com/in/3sztof/) &nbsp; {{< icon "github" >}} [GitHub](https://github.com/3sztof) &nbsp; {{< icon "telegram" >}} [Telegram](https://t.me/k3sztof) &nbsp; {{< icon "envelope" >}} [Email](mailto:krzysztof.wilczynski@protonmail.com)
 
 I'm a DevOps Engineer currently working for AWS (Amazon Web Services) Professional Services. In my day to day work, I'm assisting AWS' largest customers on their cloud journey with both my technical (coding, architecting) and consulting skills.
 

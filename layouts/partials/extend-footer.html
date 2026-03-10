@@ -1,28 +1,40 @@
-{{/* Email subscribe form via Buttondown - https://buttondown.com */}}
-{{/* To activate: create a free account at buttondown.com, then replace YOUR_BUTTONDOWN_USERNAME below */}}
+{{/* Subscribe row: email (Buttondown) + RSS */}}
+{{/* To activate email: create a free account at buttondown.com, then replace YOUR_BUTTONDOWN_USERNAME below */}}
 <div class="mt-6">
-  <div class="max-w-sm">
-    <p class="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3">
-      Get new posts by email
-    </p>
+  <p class="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3">
+    Stay updated
+  </p>
+  <div class="flex flex-wrap items-center gap-3">
+    {{/* Email subscription form */}}
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/YOUR_BUTTONDOWN_USERNAME"
       method="post"
       target="popupwindow"
       onsubmit="window.open('https://buttondown.com/YOUR_BUTTONDOWN_USERNAME', 'popupwindow')"
-      class="flex gap-2">
+      class="flex gap-2 shrink-0">
       <input
         type="email"
         name="email"
         placeholder="you@example.com"
         required
-        class="min-w-0 flex-1 px-3 py-1.5 text-sm rounded-md border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500" />
+        class="w-48 px-3 py-1.5 text-sm rounded-md border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500" />
       <button
         type="submit"
-        class="shrink-0 px-3 py-1.5 text-sm font-medium rounded-md bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white transition-colors">
-        Subscribe
+        title="Subscribe by email"
+        class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border border-neutral-300 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+        Email
       </button>
     </form>
+    {{/* Divider */}}
+    <span class="text-neutral-300 dark:text-neutral-600 select-none" aria-hidden="true">or</span>
+    {{/* RSS link */}}
+    <a
+      href="/index.xml"
+      title="Subscribe via RSS"
+      class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border border-neutral-300 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+      {{ partial "icon.html" "rss" }}
+      RSS
+    </a>
   </div>
 </div>
 

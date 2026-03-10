@@ -4,3 +4,6 @@
   {{ $custom = $custom | resources.Minify | resources.Fingerprint "sha512" }}
   <link rel="stylesheet" href="{{ $custom.RelPermalink }}" integrity="{{ $custom.Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
+
+<!-- AI scraping / training opt-out -->
+<meta name="robots" content="noai, noimageai, max-snippet:0">
