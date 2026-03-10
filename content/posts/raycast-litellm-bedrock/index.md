@@ -1,8 +1,8 @@
 ---
 title: "Raycast AI with AWS Bedrock via LiteLLM Proxy"
 date: 2026-02-23
-description: "How to wire up Raycast AI to AWS Bedrock models using a local LiteLLM proxy as an OpenAI-compatible bridge, including launchd auto-start and the bug that cost me an hour"
-tags: ["raycast", "litellm", "aws-bedrock", "claude", "ai", "productivity", "macos"]
+description: "How to wire up Raycast AI to AWS Bedrock models using a local LiteLLM proxy as an OpenAI-compatible bridge, with auto-start setup for macOS, Linux, and Windows"
+tags: ["raycast", "litellm", "aws-bedrock", "claude", "ai", "productivity", "macos", "linux", "windows"]
 categories: ["Tools", "AI", "Productivity"]
 ---
 
@@ -59,17 +59,17 @@ Create `~/.config/litellm-config.yaml`:
 model_list:
   - model_name: anthropic.claude-3-7-sonnet-20250219-v1:0
     litellm_params:
-      model: bedrock/arn:aws:bedrock:us-east-1:400299034174:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0
+      model: bedrock/arn:aws:bedrock:us-east-1:123456789012:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0
       max_tokens: 131072
 
   - model_name: anthropic.claude-4-0-20240620-v1:0
     litellm_params:
-      model: bedrock/arn:aws:bedrock:us-east-1:400299034174:inference-profile/us.anthropic.claude-sonnet-4-20250514-v1:0
+      model: bedrock/arn:aws:bedrock:us-east-1:123456789012:inference-profile/us.anthropic.claude-sonnet-4-20250514-v1:0
       max_tokens: 200000
 
   - model_name: anthropic.claude-4-5-20240620-v1:0
     litellm_params:
-      model: bedrock/arn:aws:bedrock:us-east-1:400299034174:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0
+      model: bedrock/arn:aws:bedrock:us-east-1:123456789012:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0
       max_tokens: 64000
 
   - model_name: anthropic.claude-sonnet-4-6
@@ -127,7 +127,7 @@ If that works, kill the manual process and move on to the launchd setup.
 
 Running LiteLLM manually every time is annoying. A launchd daemon starts it at login and restarts it if it crashes.
 
-Create `~/Library/LaunchAgents/com.krzywil.litellm.plist`:
+Create `~/Library/LaunchAgents/com.litellm.proxy.plist`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -136,13 +136,13 @@ Create `~/Library/LaunchAgents/com.krzywil.litellm.plist`:
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.krzywil.litellm</string>
+  <string>com.litellm.proxy</string>
 
   <key>ProgramArguments</key>
   <array>
     <string>/usr/local/bin/litellm</string>
     <string>--config</string>
-    <string>/Users/krzywil/.config/litellm-config.yaml</string>
+    <string>/Users/YOUR_USERNAME/.config/litellm-config.yaml</string>
     <string>--port</string>
     <string>4000</string>
   </array>
@@ -177,8 +177,8 @@ Adjust the `litellm` path to match your installation (`which litellm`), and repl
 Load and start it:
 
 ```bash
-launchctl load ~/Library/LaunchAgents/com.krzywil.litellm.plist
-launchctl start com.krzywil.litellm
+launchctl load ~/Library/LaunchAgents/com.litellm.proxy.plist
+launchctl start com.litellm.proxy
 ```
 
 Check it's running:
@@ -191,8 +191,8 @@ tail -f ~/Library/Logs/litellm.log
 To reload after config changes:
 
 ```bash
-launchctl unload ~/Library/LaunchAgents/com.krzywil.litellm.plist
-launchctl load ~/Library/LaunchAgents/com.krzywil.litellm.plist
+launchctl unload ~/Library/LaunchAgents/com.litellm.proxy.plist
+launchctl load ~/Library/LaunchAgents/com.litellm.proxy.plist
 ```
 
 ## Step 5: Configure Raycast
@@ -256,7 +256,7 @@ After saving, restart Raycast (Cmd+Q, then reopen). Your models should appear in
 When I first set up Sonnet 4.5, I used this in `litellm-config.yaml`:
 
 ```yaml
-model: bedrock/converse_like/arn:aws:bedrock:us-east-1:400299034174:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0
+model: bedrock/converse_like/arn:aws:bedrock:us-east-1:123456789012:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0
 ```
 
 The `converse_like/` prefix is a LiteLLM routing hint for models that use Bedrock's Converse API format. Sounds reasonable. But Raycast kept throwing:
@@ -271,10 +271,10 @@ The fix: remove `converse_like/` entirely. Standard `bedrock/arn:...` routing wo
 
 ```yaml
 # Before (broken)
-model: bedrock/converse_like/arn:aws:bedrock:us-east-1:400299034174:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0
+model: bedrock/converse_like/arn:aws:bedrock:us-east-1:123456789012:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0
 
 # After (works)
-model: bedrock/arn:aws:bedrock:us-east-1:400299034174:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0
+model: bedrock/arn:aws:bedrock:us-east-1:123456789012:inference-profile/us.anthropic.claude-sonnet-4-5-20250929-v1:0
 ```
 
 ## Claude Sonnet 4.6 Specifics
@@ -311,6 +311,142 @@ The launchd environment doesn't inherit your shell's AWS config automatically. M
 ### Slow first response
 
 LiteLLM initializes its connection to Bedrock on the first request. Subsequent requests in the same session are faster. This is normal.
+
+## Quick Tip: Auto-start LiteLLM on Boot
+
+You don't want to manually start the proxy every time you log in. Here's how to set it up as a background service on each platform.
+
+### macOS (launchd)
+
+Create `~/Library/LaunchAgents/com.litellm.proxy.plist`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.litellm.proxy</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/litellm</string>
+    <string>--config</string>
+    <string>/Users/YOUR_USERNAME/.config/litellm-config.yaml</string>
+    <string>--port</string>
+    <string>4000</string>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>AWS_PROFILE</key>
+    <string>default</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/litellm.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/litellm.err</string>
+</dict>
+</plist>
+```
+
+Adjust the `litellm` path to match your installation (`which litellm`), and set `YOUR_USERNAME` to your macOS username.
+
+Load and start it:
+
+```bash
+launchctl load ~/Library/LaunchAgents/com.litellm.proxy.plist
+launchctl start com.litellm.proxy
+```
+
+Check it's running:
+
+```bash
+launchctl list | grep litellm
+tail -f /tmp/litellm.log
+```
+
+To reload after config changes:
+
+```bash
+launchctl unload ~/Library/LaunchAgents/com.litellm.proxy.plist
+launchctl load ~/Library/LaunchAgents/com.litellm.proxy.plist
+```
+### Linux (systemd)
+
+Create `~/.config/systemd/user/litellm.service`:
+
+```ini
+[Unit]
+Description=LiteLLM Proxy
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/litellm --config %h/.config/litellm-config.yaml --port 4000
+Restart=on-failure
+RestartSec=5
+Environment=AWS_PROFILE=default
+
+[Install]
+WantedBy=default.target
+```
+
+Enable and start it:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now litellm
+
+# Check status
+systemctl --user status litellm
+journalctl --user -u litellm -f
+```
+
+Replace `/usr/local/bin/litellm` with the output of `which litellm` if it's installed elsewhere (e.g. `~/.local/bin/litellm` for pip user installs).
+
+### Windows (Task Scheduler)
+
+Open PowerShell as your regular user (not admin) and run:
+
+```powershell
+$action = New-ScheduledTaskAction `
+  -Execute "$env:LOCALAPPDATA\Programs\Python\Python312\Scripts\litellm.exe" `
+  -Argument "--config $env:USERPROFILE\.config\litellm-config.yaml --port 4000"
+
+$trigger = New-ScheduledTaskTrigger -AtLogon -User $env:USERNAME
+
+$settings = New-ScheduledTaskSettingsSet `
+  -ExecutionTimeLimit 0 `
+  -RestartCount 3 `
+  -RestartInterval (New-TimeSpan -Minutes 1)
+
+Register-ScheduledTask `
+  -TaskName "LiteLLM Proxy" `
+  -Action $action `
+  -Trigger $trigger `
+  -Settings $settings `
+  -RunLevel Limited
+```
+
+Adjust the `-Execute` path to match your Python installation. To find it:
+
+```powershell
+Get-Command litellm | Select-Object -ExpandProperty Source
+```
+
+To manage the task later: open the `Task Scheduler` app and search for "LiteLLM Proxy" in the task library. AWS credentials on Windows are picked up from `%USERPROFILE%\.aws\credentials` automatically, so no extra environment setup needed if you've already run `aws configure`.
+
 
 ## Resources
 
