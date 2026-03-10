@@ -1,3 +1,86 @@
+Sitemap: https://3sztof.github.io/sitemap.xml
 User-agent: *
 Allow: /
-Sitemap: https://3sztof.github.io/sitemap.xml
+
+# --- AI training crawlers - blocked ---
+
+# OpenAI - training only (ChatGPT-User and OAI-SearchBot allowed below)
+User-agent: GPTBot
+Disallow: /
+
+# Anthropic - training only (Claude-User and Claude-SearchBot allowed below)
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+# Google AI training (Googlebot for search remains allowed via * rule above)
+User-agent: Google-Extended
+Disallow: /
+
+# Apple Intelligence / Siri training
+User-agent: Applebot-Extended
+Disallow: /
+
+# Meta / Llama training
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# xAI / Grok training
+User-agent: Grok-bot
+Disallow: /
+
+# Cohere training
+User-agent: cohere-ai
+Disallow: /
+
+# Amazon AI training
+User-agent: Amazonbot
+Disallow: /
+
+# Common Crawl (open dataset used by many AI labs)
+User-agent: CCBot
+Disallow: /
+
+# ByteDance / TikTok AI training
+User-agent: Bytespider
+Disallow: /
+
+# Diffbot (web extraction / knowledge graphs)
+User-agent: Diffbot
+Disallow: /
+
+# Generic scraping tools
+User-agent: img2dataset
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+# --- AI search / browsing bots - allowed ---
+# These let your content appear in AI-generated answers without feeding training data
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
