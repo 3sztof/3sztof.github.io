@@ -119,6 +119,6 @@ globalWidgetPosition = "Right"
 [verification]
 
 [rssnext]
-# To enable: sign up at https://follow.is, add your feed, then fill in feedId and userId
+# To enable: sign up at https://app.folo.is, add your feed, then fill in feedId and userId
 # feedId = ""
 # userId = ""
