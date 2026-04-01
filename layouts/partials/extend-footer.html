@@ -1,13 +1,11 @@
-{{/* Subscribe row: email (Buttondown) + RSS */}}
-{{/* To activate email: create a free account at buttondown.com, then replace YOUR_BUTTONDOWN_USERNAME below */}}
+{{/* Subscribe row: email (follow.it) + RSS */}}
 <div class="mt-6">
   <p class="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3">
     Stay updated
   </p>
   <div class="flex flex-wrap items-center gap-3">
-    {{/* Email subscription form */}}
-    <form action="https://buttondown.com/api/emails/embed-subscribe/3sztof" method="post" target="popupwindow"
-      onsubmit="window.open('https://buttondown.com/3sztof', 'popupwindow')" class="flex gap-2 shrink-0">
+    {{/* Email subscription form (follow.it) */}}
+    <form action="https://api.follow.it/subscription-form/SGFRR0N6WWVCeVNDbm9vc3VBQVBQU1RjajlLMmF1dGJNL09XanVLSzJhL2VYTGxFaDF3ckY2QStCVTBKelRaZDJxb2RUL2FHaWh3eENJR05yb1hmN0NYK0lnYkhUcGlHSnNWSThtbVo3MVdwYk9BYWwrWldIRERTMUtKTFN3dUJ8c1QzRG5lS2xFMzhsYVBKMGUwU0Qxc0dFMmJ5Nm5CWjMwSG53OVJKNytIOD0=/8" method="post" class="flex gap-2 shrink-0">
       <input type="email" name="email" placeholder="you@example.com" required
         class="w-48 px-3 py-1.5 text-sm rounded-md border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500" />
       <button type="submit" title="Subscribe by email"
