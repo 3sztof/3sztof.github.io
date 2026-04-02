@@ -1,79 +1,122 @@
 ---
-title: "Obsidian + Smart Connections + MCP: Building Your AI-Powered Knowledge System"
+title: "Obsidian + AI: From Simple Plugin to Full Agent Integration"
 date: 2026-02-12
-description: "A practical guide to setting up Obsidian with Smart Connections and Model Context Protocol for semantic search and AI-powered knowledge management"
-tags: ["obsidian", "ai", "smart-connections", "mcp", "knowledge-management", "productivity", "opencode", "kiro"]
+lastmod: 2026-04-02
+description: "Three tiers of AI-powered Obsidian: the Smart Connections plugin alone covers most users. The CLI and MCP integrations go further - but only if you actually need them."
+tags: ["obsidian", "ai", "smart-connections", "mcp", "knowledge-management", "productivity", "opencode", "kiro", "claude-code"]
 categories: ["Tools", "Productivity", "AI"]
 ---
 
-A few colleagues recently saw my Obsidian setup and asked how I get AI agents to search my notes semantically - not just keyword matching, but actually understanding what I'm looking for. The answer is a combination of three tools: **Smart Connections** for local embeddings, **MCP** (Model Context Protocol) for exposing those embeddings to AI agents, and optionally the new **Obsidian CLI** for write operations.
+A few colleagues recently saw my Obsidian setup and asked how I get AI agents to search my notes semantically - not just keyword matching, but actually understanding what I'm looking for.
 
-This post walks through the complete setup and shares some practical workflows I've found useful.
+The honest answer is: **most people only need one plugin**. The rest is optional depth for people who want AI agents to interact with their vault programmatically.
 
-## Why This Setup?
+This post is structured in three tiers. Stop at whichever one covers your actual needs.
 
-Before diving into the how, let's address the why:
+---
 
-1. **Local embeddings**: All embeddings are computed and stored locally using Smart Connections' bundled model. Your notes aren't sent anywhere for embedding generation. (Note: when AI agents query results via MCP, the retrieved content is sent to your configured LLM provider - AWS Bedrock, Anthropic, etc. - unless you use a fully local setup like Ollama.)
-2. **Semantic search**: Find notes by meaning, not just keywords. "Find notes about conference talk ideas" works even if none of your notes contain those exact words.
-3. **AI-native**: AI agents (Opencode, Kiro CLI) can query your knowledge base directly through MCP tools.
-4. **Zero embedding costs**: Smart Connections bundles a local embedding model - no OpenAI API calls needed for generating embeddings.
+## Tier 1: Smart Connections plugin (most users - stop here)
 
-## The Architecture
+**If you just want AI-powered semantic search inside Obsidian, this is all you need.**
 
-Here's how the pieces fit together:
+[Smart Connections](https://github.com/brianpetro/obsidian-smart-connections) is a community plugin that generates embeddings for your notes locally using a bundled model (TaylorAI/bge-micro-v2, 384 dimensions). No API key, no external calls, no cost. Your notes stay on your machine.
 
-![Architecture diagram showing the flow from Obsidian vault through Smart Connections to MCP and AI agents](architecture.png)
+### Installation
 
-## Prerequisites
+1. Obsidian Settings → Community plugins → Browse
+2. Search "Smart Connections" → Install → Enable
 
-Before starting, you'll need:
+That's it. The plugin starts embedding your notes in the background. Progress is visible in the Smart Connections panel (brain icon in the sidebar).
 
-- [Obsidian](https://obsidian.md/) installed with a vault containing some notes
-- [Node.js](https://nodejs.org/) v18 or later
-- An MCP-compatible client (Opencode, Kiro CLI, or similar)
-- Basic comfort with the terminal
-
-## Step 1: Install Smart Connections Plugin
-
-Smart Connections is an Obsidian plugin that generates embeddings for your notes locally.
-
-1. Open Obsidian Settings → Community plugins
-2. Disable Safe mode if prompted
-3. Click Browse and search for "Smart Connections"
-4. Install and enable the plugin
-
-### Initial Embedding Generation
-
-After enabling the plugin, it will start generating embeddings for your notes in the background. You can monitor progress in the Smart Connections panel (click the brain icon in the sidebar).
-
-**Important notes:**
-- First-time embedding generation takes a few minutes depending on vault size
+**A few things to know:**
+- First-time embedding takes a few minutes depending on vault size
 - Notes shorter than ~200 characters won't be embedded
-- Embeddings are stored in `.smart-env/` folder in your vault
-- The plugin uses TaylorAI/bge-micro-v2 model (384 dimensions) by default
+- Embeddings live in `.smart-env/` inside your vault - small footprint, usually under 10MB
 
-You can verify embeddings are working by using the Smart Connections panel - it should show semantically similar notes when you open any note.
+### What you get
 
-## Step 2: Set Up the MCP Server
+Once embeddings are done, the Smart Connections panel shows semantically similar notes whenever you open any note. You can also chat with your vault directly from the plugin - ask questions in natural language and it retrieves relevant notes as context.
 
-The [smart-connections-mcp](https://github.com/msdanyg/smart-connections-mcp) server exposes your Smart Connections embeddings via MCP protocol.
+This covers the vast majority of use cases: finding related notes, surfacing connections you'd forgotten, querying your own writing. **If this is what you were looking for, you're done.**
+
+---
+
+## Tier 2: Obsidian CLI + agent skills (for agent users)
+
+If you want AI agents outside Obsidian - coding assistants, terminal agents - to read and write your vault, the [Obsidian CLI](https://obsidian.md/changelog/2026-02-10-desktop-v1.12.0/) (released February 2026) is the clean way to do it.
 
 ```bash
-# Clone the repository
-git clone https://github.com/msdanyg/smart-connections-mcp.git
+# Read a note
+obsidian read "Ideas/conference-talks.md"
 
-# I recommend placing it in a standard location
+# Append content
+obsidian append "Ideas/conference-talks.md" "New idea from today's session"
+
+# Create a note
+obsidian create "Meeting Notes/2026-02-12.md"
+
+# Read today's daily note
+obsidian daily:read
+
+# Set a property
+obsidian property:set "note.md" status "published"
+```
+
+### Wiring it into your agent
+
+The practical way to give an agent access to your vault is through an agent skill - a set of instructions that tells the agent how and when to use the CLI. There are ready-made skills for this on [skills.sh](https://skills.sh/kepano/obsidian-skills): one for the [Obsidian CLI](https://skills.sh/kepano/obsidian-skills/obsidian-cli), one for [Obsidian Bases](https://skills.sh/kepano/obsidian-skills/obsidian-bases), and one covering [Obsidian markdown conventions](https://skills.sh/kepano/obsidian-skills/obsidian-markdown). Install whichever covers your workflow and the agent knows how to interact with your vault without you re-explaining it every session.
+
+This tier gives you **write access** (create, append, update notes) in addition to read, and works cleanly across any MCP-compatible agent (Opencode, Kiro, Claude Code, etc.). It doesn't require cloning repos or running local servers - just the CLI and a skill config.
+
+---
+
+## Tier 3: Agent-accessible semantic search (advanced users only)
+
+> **Stop here unless you specifically need semantic search available to external AI agents via MCP.** This section is for people who have already used Tiers 1 and 2 and found them insufficient. It requires comfort with Node.js, local servers, and JSON config files. It is functional but involves more moving parts than the options above.
+
+The payoff over the CLI tier: **semantic search**. The CLI can read and write notes by path, but it can't answer "find everything I wrote about async Python" without knowing which files to look at. An MCP server that has access to your Smart Connections embeddings can.
+
+### State of the ecosystem (April 2026)
+
+The honest picture first, because the landscape is fragmented and worth understanding before you invest time in any setup.
+
+**Smart Connections has no official MCP server.** Brian Petro's project (4,700+ stars, actively developed) exposes nothing over MCP. The gap is real and unfilled on the official side.
+
+The community options, ranked by maintenance health (state as of April 2, 2026):
+
+| Project | Stars | Last commit | Semantic search | Notes |
+|---|---|---|---|---|
+| [aaronsb/obsidian-mcp-plugin](https://github.com/aaronsb/obsidian-mcp-plugin) | 271 | March 2026 | Graph traversal (not embeddings) | Best architecture; runs inside Obsidian; beta only (BRAT) |
+| [jacksteamdev/obsidian-mcp-tools](https://github.com/jacksteamdev/obsidian-mcp-tools) | 698 | July 2025 | ✅ Smart Connections embeddings | Seeking maintainers since mid-2025 |
+| [StevenStavrakis/obsidian-mcp](https://github.com/StevenStavrakis/obsidian-mcp) | 673 | June 2025 | ❌ Keyword only | Cleanest setup; no embeddings |
+| [msdanyg/smart-connections-mcp](https://github.com/msdanyg/smart-connections-mcp) | 31 | Oct 2025 | ✅ Smart Connections embeddings | One-person side project; still the only working embedding-based option |
+
+If you need embedding-based semantic search for agents right now, `msdanyg/smart-connections-mcp` is still the only working option despite its small footprint. It's clever in one specific way: it doesn't re-embed anything - it reads the `.smart-env/` files Smart Connections already computed. The hackiness is in the packaging, not the approach.
+
+If you want the best-maintained option and can live without embedding-based search, `aaronsb/obsidian-mcp-plugin` is the one to watch - it runs as a proper Obsidian plugin, serves MCP over HTTP on `localhost:3001`, supports wikilink graph traversal, Dataview queries, and Obsidian Bases. It got commits in March 2026. The catch: it's beta, install via BRAT only.
+
+The setup below uses `msdanyg/smart-connections-mcp` since it's the only embedding path. Substitute `aaronsb` if graph traversal is enough for your use case.
+
+### What this looks like in practice
+
+> "Search my notes for ideas related to conference talk proposals. Then find notes similar to the top results. Summarize the key themes."
+
+The agent chains `search_notes` with `get_similar_notes` and synthesizes across your vault without you naming a single file. This is genuinely powerful - it's just that getting here requires the setup below.
+
+### Setup
+
+**Prerequisites:** Node.js v18+, Smart Connections plugin already running (Tier 1), an MCP-compatible client.
+
+```bash
+git clone https://github.com/msdanyg/smart-connections-mcp.git
 mkdir -p ~/.local/share/mcp-servers
 mv smart-connections-mcp ~/.local/share/mcp-servers/
-
-# Install dependencies and build
 cd ~/.local/share/mcp-servers/smart-connections-mcp
 npm install
 npm run build
 ```
 
-The server provides six MCP tools:
+### MCP tools exposed
 
 | Tool | Description |
 |------|-------------|
@@ -84,11 +127,9 @@ The server provides six MCP tools:
 | `get_note_content` | Retrieve note content with block extraction |
 | `get_stats` | Knowledge base statistics |
 
-## Step 3: Configure Your MCP Client
+### Client configuration
 
-### For Opencode
-
-Add the server to your `~/.config/opencode/opencode.json`:
+**Opencode** (`~/.config/opencode/opencode.json`):
 
 ```json
 {
@@ -109,9 +150,7 @@ Add the server to your `~/.config/opencode/opencode.json`:
 }
 ```
 
-### For Kiro CLI
-
-Kiro uses the same MCP configuration format. Add to your Kiro config:
+**Kiro CLI:**
 
 ```json
 {
@@ -127,174 +166,73 @@ Kiro uses the same MCP configuration format. Add to your Kiro config:
 }
 ```
 
-### For Other MCP Clients
+**Claude Code** (`~/.claude.json` for global, or `.mcp.json` in your project root):
 
-Other MCP-compatible clients (Claude Desktop, Claude Code, etc.) follow similar patterns - you'll need to specify the command, arguments, and environment variables pointing to your vault. Check your client's documentation for the exact configuration format.
-
-**Remember to replace:**
-- `YOUR_USERNAME` with your actual username
-- `/path/to/your/obsidian/vault` with the absolute path to your Obsidian vault
-
-## Step 4: Verify the Setup
-
-Restart your MCP client and test the connection. In Opencode, try:
-
-> "Search my notes for anything related to conference talks"
-
-If configured correctly, the AI will use the `search_notes` tool and return semantically relevant results from your vault.
-
-You can also check the stats:
-
-> "Show me statistics about my knowledge base"
-
-This should return something like:
-```
-Total notes: 137
-Total blocks: 892
-Embedding dimension: 384
-Model: TaylorAI/bge-micro-v2
+```json
+{
+  "mcpServers": {
+    "smart-connections": {
+      "command": "node",
+      "args": ["/Users/YOUR_USERNAME/.local/share/mcp-servers/smart-connections-mcp/dist/index.js"],
+      "env": {
+        "SMART_VAULT_PATH": "/path/to/your/obsidian/vault"
+      }
+    }
+  }
+}
 ```
 
-## Practical Workflows
-
-Here are some workflows I've found genuinely useful:
-
-### Aggregating Ideas for Conference Talks
-
-This is the workflow that impressed my colleagues. I had a large backlog of scattered notes - ideas, observations, half-formed thoughts about various topics. Getting AI to aggregate them semantically was a game-changer:
-
-> "Search my notes for ideas related to async Python programming. Then find notes similar to the top results to expand the search. Summarize the key themes."
-
-The AI chains `search_notes` with `get_similar_notes` to build a comprehensive picture, then synthesizes it into actionable themes.
-
-### Refactoring Notes for Different Audiences
-
-When submitting to different conferences, I need to adjust the messaging. Same core ideas, different framing:
-
-> "Find my notes about serverless architectures. Summarize them in a way that would fit a call for papers focused on cost optimization."
-
-> "Now reframe the same content for a developer experience angle."
-
-### Building Connection Graphs
-
-Understanding how your notes relate to each other:
-
-> "Build a connection graph starting from my note 'AI-assisted development.md' with depth 3. What clusters of related topics emerge?"
-
-The `get_connection_graph` tool returns hierarchical relationships that reveal hidden connections between ideas.
-
-### Quick Knowledge Base Queries
-
-Day-to-day lookups when you can't remember where you wrote something:
-
-> "Find notes where I discussed trade-offs between DynamoDB and PostgreSQL"
-
-> "What did I write about error handling patterns?"
-
-## The New Obsidian CLI (v1.12.0)
-
-Obsidian recently released a CLI (February 2026) that complements this setup nicely. While the MCP server provides **read-only semantic access**, the CLI enables **write operations**:
+Alternatively, add it from the command line:
 
 ```bash
-# Create a new note
-obsidian create "Meeting Notes/2025-02-12.md"
-
-# Append content to a note
-obsidian append "Ideas/conference-talks.md" "New idea: ..."
-
-# Read daily note
-obsidian daily:read
-
-# Manage properties
-obsidian property:set "note.md" status "published"
+claude mcp add smart-connections \
+  -e SMART_VAULT_PATH=/path/to/your/obsidian/vault \
+  -- node /Users/YOUR_USERNAME/.local/share/mcp-servers/smart-connections-mcp/dist/index.js
 ```
 
-### Combined Workflow: AI Search → CLI Write
+Other MCP-compatible clients follow the same pattern - command, args, environment pointing at your vault.
 
-The real power comes from combining MCP (read) with CLI (write):
+> **Personal note:** I keep the smart-connections MCP disabled by default in Opencode and only enable it when I have a very specific query that needs semantic vault search. Most sessions don't need it, and having it always on just adds noise to the agent's tool list.
 
-1. AI searches your vault via MCP: "Find all notes tagged #draft about Python"
-2. AI analyzes and suggests consolidation
-3. You approve, AI executes via CLI to create new consolidated note
+### Troubleshooting
 
-This isn't fully automated yet (the AI can't directly invoke CLI commands), but the pattern is emerging. Some users are already scripting this with shell commands.
+**Connection errors / "server not found":** Verify the path is absolute and correct, confirm `npm run build` completed without errors, ensure `SMART_VAULT_PATH` points to a vault with Smart Connections enabled, restart your MCP client after config changes.
 
-## Performance Notes
+**Empty search results:** Smart Connections may still be generating embeddings - check the plugin panel. Notes under ~200 characters aren't embedded. Try broader queries.
 
-From my experience with a ~150 note vault:
+**Slow first query:** Expected behavior - first query loads embeddings into memory. Subsequent queries are fast.
 
-- **Initial load**: 2-5 seconds for the MCP server to read embeddings
-- **Search queries**: <50ms typically
-- **Memory usage**: ~20-30MB for the server
-- **Embedding generation**: Happens automatically when you edit notes in Obsidian
+**"Embedding dimension mismatch":** You changed Smart Connections' model. Delete `.smart-env/` from your vault, restart Obsidian, wait for re-embedding.
 
-The embeddings themselves are small - the `.smart-env` folder is usually under 10MB even for large vaults.
+### Security
 
-## Troubleshooting
-
-### "Server not found" or connection errors
-
-1. Verify the path in your config is absolute and correct
-2. Check that `npm run build` completed successfully
-3. Ensure `SMART_VAULT_PATH` points to a vault with Smart Connections enabled
-4. Restart your MCP client after config changes
-
-### Empty search results
-
-- Make sure Smart Connections has finished generating embeddings (check the plugin panel)
-- Notes shorter than ~200 characters aren't embedded
-- Try broader search terms
-
-### Slow initial queries
-
-The first query after starting the server loads embeddings into memory. Subsequent queries are much faster.
-
-### "Embedding dimension mismatch"
-
-If you changed Smart Connections' embedding model, regenerate embeddings:
-1. Delete the `.smart-env` folder in your vault
-2. Restart Obsidian
-3. Wait for Smart Connections to regenerate embeddings
-
-## Security Considerations
-
-A few things to keep in mind:
-
-- **The MCP server has read access to your entire vault.** Only enable it for vaults you're comfortable exposing to AI agents.
-- **Embeddings can leak information.** While not human-readable, embeddings encode semantic content. Treat `.smart-env` with appropriate care.
-- **MCP requires explicit consent.** Well-designed MCP clients ask before invoking tools. Don't disable these safeguards.
-
-## Alternatives and Trade-offs
-
-This isn't the only approach. Here are some alternatives:
-
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Smart Connections + MCP** (this guide) | Privacy-first, free, semantic search | Requires setup, local only |
-| **Obsidian Copilot plugin** | Simpler setup, integrated UI | Less flexible for agentic workflows |
-| **RAG with cloud embeddings** | Higher quality embeddings, more models | API costs, privacy concerns |
-| **Direct file access** | No setup needed | No semantic search, just keyword matching |
-
-For my use case - privacy-sensitive notes that I want AI to search semantically - the Smart Connections + MCP approach hits the sweet spot.
-
-## What's Next?
-
-The MCP ecosystem is growing rapidly. Some things I'm watching:
-
-- **Better CLI integration**: As Obsidian CLI matures, tighter AI → CLI workflows become possible
-- **Multi-vault support**: Currently one vault per MCP server instance
-- **Embedding model options**: Smart Connections Pro offers more model choices
-- **Two-way sync**: AI agents that can both read and write through MCP
-
-## Resources
-
-- [Smart Connections Plugin](https://github.com/brianpetro/obsidian-smart-connections) - Official GitHub repository
-- [smart-connections-mcp](https://github.com/msdanyg/smart-connections-mcp) - MCP server for Smart Connections
-- [Model Context Protocol](https://modelcontextprotocol.io/) - Official MCP specification
-- [Obsidian CLI Documentation](https://obsidian.md/changelog/2026-02-10-desktop-v1.12.0/) - Release notes with CLI details
-- [Opencode](https://opencode.ai/) - Open source AI coding agent with MCP support
-- [Kiro CLI](https://kiro.dev/) - AWS's AI development tool
+- The MCP server has read access to your **entire vault**. Only enable for vaults you're comfortable exposing to AI agents.
+- Embeddings encode semantic content - not human-readable, but not meaningless either. Treat `.smart-env/` with care.
+- Well-designed MCP clients ask before invoking tools. Don't disable those prompts.
 
 ---
 
-*This setup has genuinely changed how I work with my notes. If you try it out, I'd love to hear what workflows you discover - always open for discussion on better approaches!*
+## Which tier do you need?
+
+| You want... | Use |
+|---|---|
+| Semantic search and connections inside Obsidian | **Tier 1** - Smart Connections plugin |
+| AI agents that can read/write your vault | **Tier 2** - Obsidian CLI + skill |
+| Semantic search available to external agents via MCP | **Tier 3** - Smart Connections MCP |
+
+Most people are Tier 1. Tier 3 is worth the setup only if you've hit the ceiling of what Tier 1 and 2 offer and specifically need agent-accessible semantic search.
+
+---
+
+## Resources
+
+- [Smart Connections Plugin](https://github.com/brianpetro/obsidian-smart-connections)
+- [smart-connections-mcp](https://github.com/msdanyg/smart-connections-mcp) - embedding-based MCP server (small project, works)
+- [aaronsb/obsidian-mcp-plugin](https://github.com/aaronsb/obsidian-mcp-plugin) - best-maintained option, graph traversal, beta
+- [jacksteamdev/obsidian-mcp-tools](https://github.com/jacksteamdev/obsidian-mcp-tools) - Smart Connections embeddings via MCP, maintenance uncertain
+- [StevenStavrakis/obsidian-mcp](https://github.com/StevenStavrakis/obsidian-mcp) - clean, no embeddings
+- [obsidian-local-rest-api](https://github.com/coddingtonbear/obsidian-local-rest-api) - gold-standard REST plugin (1.9k stars)
+- [Obsidian CLI release notes](https://obsidian.md/changelog/2026-02-10-desktop-v1.12.0/)
+- [skills.sh Obsidian skills](https://skills.sh/kepano/obsidian-skills) - CLI, Bases, and markdown skills for agents
+- [Model Context Protocol](https://modelcontextprotocol.io/)
+- [Opencode](https://opencode.ai/) - [Kiro CLI](https://kiro.dev/) - [Claude Code](https://claude.ai/code)
