@@ -1,56 +1,57 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/debian
+// For format details, see https://aka.ms/devcontainer.json
 {
-	"name": "Debian",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
-	"features": {
-		"ghcr.io/devcontainers/features/hugo:1": {},
-		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/phil-bell/devcontainer-features/antigen:1": {
-			"theme": "romkatv/powerlevel10k",
-			"bundles": [
-				"zsh-users/zsh-syntax-highlighting",
-				"zsh-users/zsh-completions"
-			]
-		}
-	},
-	"customizations": {
-		"vscode": {
-			"settings": {
-				"workbench.colorTheme": "Night Owl",
-				"editor.formatOnSave": true,
-				"terminal.integrated.defaultProfile.linux": "zsh",
-				"terminal.integrated.profiles.linux": {
-					"zsh": {
-						"path": "/usr/bin/zsh"
-					}
-				}
-			},
-			"extensions": [
-				"sdras.night-owl",
-				"natqe.reload",
-				"zainchen.json",
-				"dbaeumer.vscode-eslint",
-				"tamasfe.even-better-toml",
-				"amazonwebservices.amazon-q-vscode",
-				"mhutchie.git-graph",
-				"eamodio.gitlens"
-			]
-		}
-	},
-	// Install Blowfish CLI
-	"postCreateCommand": {
-		"copy-zshrc": "cp /workspaces/${localWorkspaceFolderBasename}/.devcontainer/.zshrc ~/.zshrc",
-		"copy-p10kzsh": "cp /workspaces/${localWorkspaceFolderBasename}/.devcontainer/.p10k.zsh ~/.p10k.zsh",
-		"install-blowfish": "npm install -g blowfish-tools"
-	},
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [
-		1313
-	]
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  "name": "hugo-blog",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": ["--init"],
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+
+  "remoteEnv": {
+    "DO_NOT_TRACK": "1",
+    "PATH": "/home/vscode/.opencode/bin:/home/vscode/.atuin/bin:${containerEnv:PATH}"
+  },
+
+  "remoteUser": "vscode",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh",
+            "icon": "terminal-linux"
+          }
+        }
+      },
+      "extensions": [
+        "anomalyco.opencode",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "budparr.language-hugo-vscode",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint"
+
+        // Uncomment as needed:
+        // "sdras.night-owl",
+        // "natqe.reload",
+        // "amazonwebservices.amazon-q-vscode",
+        // "amazonwebservices.aws-toolkit-vscode"
+      ]
+    }
+  },
+
+  "forwardPorts": [1313],
+  "portsAttributes": {
+    "1313": {
+      "label": "Hugo dev server",
+      "onAutoForward": "notify"
+    }
+  }
 }
