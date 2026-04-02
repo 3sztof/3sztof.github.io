@@ -1,6 +1,7 @@
 ---
 title: "Async Python: Concurrency Without The Headaches"
 date: 2025-07-17
+lastmod: 2026-02-13
 description: "A summary of key resources for mastering asynchronous programming in Python"
 tags: ["python", "asyncio", "concurrency", "programming"]
 categories: ["Development", "Python"]

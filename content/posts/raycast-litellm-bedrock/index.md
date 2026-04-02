@@ -1,6 +1,7 @@
 ---
 title: "Raycast AI with AWS Bedrock via LiteLLM Proxy"
 date: 2026-02-23
+lastmod: 2026-03-10
 description: "How to wire up Raycast AI to AWS Bedrock models using a local LiteLLM proxy as an OpenAI-compatible bridge, with auto-start setup for macOS, Linux, and Windows"
 tags: ["raycast", "litellm", "aws-bedrock", "claude", "ai", "productivity", "macos", "linux", "windows"]
 categories: ["Tools", "AI", "Productivity"]

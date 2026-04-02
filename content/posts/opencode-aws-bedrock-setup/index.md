@@ -1,6 +1,7 @@
 ---
 title: "Supercharging Opencode with AWS Bedrock, Oh-My-Opencode, and Custom Skills"
 date: 2026-02-13
+lastmod: 2026-02-23
 description: "A practical guide to configuring Opencode CLI with AWS Bedrock models, oh-my-opencode for multi-agent orchestration, plugins, and custom skills for faster agentic development"
 tags: ["opencode", "aws-bedrock", "claude", "ai", "agentic-development", "oh-my-opencode", "mcp", "productivity"]
 categories: ["Tools", "AI", "Development"]
