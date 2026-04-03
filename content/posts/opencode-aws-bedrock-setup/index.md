@@ -28,14 +28,14 @@ A few reasons I landed on this particular combination:
 
 The setup consists of several layers:
 
-| Layer | Purpose |
-|-------|---------|
-| **Opencode CLI** | Core agentic coding interface (TUI or CLI) |
-| **oh-my-openagent** | Multi-agent orchestration plugin |
-| **AWS Bedrock** | LLM provider with Claude models |
-| **MCP Servers** | External tool integrations |
-| **Plugins** | System-level extensions |
-| **Skills** | Reusable knowledge modules |
+| Layer               | Purpose                                    |
+| ------------------- | ------------------------------------------ |
+| **Opencode CLI**    | Core agentic coding interface (TUI or CLI) |
+| **oh-my-openagent** | Multi-agent orchestration plugin           |
+| **AWS Bedrock**     | LLM provider with Claude models            |
+| **MCP Servers**     | External tool integrations                 |
+| **Plugins**         | System-level extensions                    |
+| **Skills**          | Reusable knowledge modules                 |
 
 ## Prerequisites
 
@@ -116,7 +116,7 @@ Create `~/.config/opencode/oh-my-opencode.json` to specify which models each age
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/master/assets/oh-my-opencode.schema.json",
   "agents": {
     "sisyphus": {
-      "model": "amazon-bedrock/global.anthropic.claude-opus-4-6"
+      "model": "amazon-bedrock/global.anthropic.claude-opus-4-6-v1"
     },
     "hephaestus": {
       "model": "amazon-bedrock/global.anthropic.claude-sonnet-4-6"
@@ -179,18 +179,18 @@ Create `~/.config/opencode/oh-my-opencode.json` to specify which models each age
 
 Oh-my-openagent provides a full team of specialized agents:
 
-| Agent | Role | Model tier |
-|-------|------|------------|
-| **Sisyphus** | Main orchestrator - delegates, plans, ships | Opus |
-| **Hephaestus** | Implementation-focused builder | Sonnet |
-| **Oracle** | High-quality consultation for architecture and hard debugging | Sonnet |
-| **Librarian** | Research external docs, OSS examples, best practices | Sonnet |
-| **Explore** | Fast codebase grep and pattern discovery | Haiku (cheap, fast) |
-| **Prometheus** | Pre-task planning and interview-style scope definition | Sonnet |
-| **Metis** | Pre-planning consultant - surfaces ambiguities before work starts | Sonnet |
-| **Momus** | Plan reviewer - critiques work plans for gaps and clarity | Sonnet |
-| **Atlas** | General-purpose background agent | Sonnet |
-| **Multimodal Looker** | Image and visual analysis | Sonnet |
+| Agent                 | Role                                                              | Model tier          |
+| --------------------- | ----------------------------------------------------------------- | ------------------- |
+| **Sisyphus**          | Main orchestrator - delegates, plans, ships                       | Opus                |
+| **Hephaestus**        | Implementation-focused builder                                    | Sonnet              |
+| **Oracle**            | High-quality consultation for architecture and hard debugging     | Sonnet              |
+| **Librarian**         | Research external docs, OSS examples, best practices              | Sonnet              |
+| **Explore**           | Fast codebase grep and pattern discovery                          | Haiku (cheap, fast) |
+| **Prometheus**        | Pre-task planning and interview-style scope definition            | Sonnet              |
+| **Metis**             | Pre-planning consultant - surfaces ambiguities before work starts | Sonnet              |
+| **Momus**             | Plan reviewer - critiques work plans for gaps and clarity         | Sonnet              |
+| **Atlas**             | General-purpose background agent                                  | Sonnet              |
+| **Multimodal Looker** | Image and visual analysis                                         | Sonnet              |
 
 The model tiering is deliberate: **Opus** for Sisyphus only - it's the orchestrator that reasons about the whole task, so quality here pays the biggest dividends. **Sonnet** for most specialist agents and categories. **Haiku** for high-frequency, low-complexity operations where speed matters more than depth. Delegated categories (below) never use Opus - Sisyphus dispatches those tasks, not the other way around.
 
@@ -198,16 +198,16 @@ The model tiering is deliberate: **Opus** for Sisyphus only - it's the orchestra
 
 Beyond named agents, oh-my-openagent supports task categories that let Sisyphus delegate work to a domain-appropriate model:
 
-| Category | Model | When used |
-|----------|-------|-----------|
-| `visual-engineering` | Sonnet | Frontend, UI/UX, CSS, animations |
-| `ultrabrain` | Sonnet | Hard logic, architecture decisions |
-| `deep` | Sonnet | Autonomous research + end-to-end implementation |
-| `artistry` | Sonnet | Creative, unconventional problem-solving |
-| `quick` | Haiku | Single-file changes, typos, trivial edits |
-| `unspecified-low` | Haiku | Low-effort tasks that don't fit other categories |
-| `unspecified-high` | Sonnet | Higher-effort tasks that don't fit other categories |
-| `writing` | Sonnet | Documentation, prose, technical writing |
+| Category             | Model  | When used                                           |
+| -------------------- | ------ | --------------------------------------------------- |
+| `visual-engineering` | Sonnet | Frontend, UI/UX, CSS, animations                    |
+| `ultrabrain`         | Sonnet | Hard logic, architecture decisions                  |
+| `deep`               | Sonnet | Autonomous research + end-to-end implementation     |
+| `artistry`           | Sonnet | Creative, unconventional problem-solving            |
+| `quick`              | Haiku  | Single-file changes, typos, trivial edits           |
+| `unspecified-low`    | Haiku  | Low-effort tasks that don't fit other categories    |
+| `unspecified-high`   | Sonnet | Higher-effort tasks that don't fit other categories |
+| `writing`            | Sonnet | Documentation, prose, technical writing             |
 
 ## Step 4: Add Useful Plugins
 
@@ -225,12 +225,12 @@ Plugins extend Opencode's capabilities at the system level. Here are some I find
 }
 ```
 
-| Plugin | Purpose |
-|--------|---------|
-| **terminal-notifier** | Desktop notifications when tasks complete |
-| **envsitter-guard** | Prevents accidental exposure of .env secrets |
-| **smart-title** | Auto-generates meaningful session titles |
-| **wakatime** | Tracks coding time for productivity metrics |
+| Plugin                | Purpose                                      |
+| --------------------- | -------------------------------------------- |
+| **terminal-notifier** | Desktop notifications when tasks complete    |
+| **envsitter-guard**   | Prevents accidental exposure of .env secrets |
+| **smart-title**       | Auto-generates meaningful session titles     |
+| **wakatime**          | Tracks coding time for productivity metrics  |
 
 ## Step 5: Configure MCP Servers
 
@@ -259,10 +259,10 @@ MCP (Model Context Protocol) servers give Opencode access to external tools and 
 
 Some MCP servers I use regularly:
 
-| Server | Purpose |
-|--------|---------|
-| **aws-documentation** | Query AWS docs directly |
-| **cdk-mcp-server** | CDK construct information |
+| Server                | Purpose                   |
+| --------------------- | ------------------------- |
+| **aws-documentation** | Query AWS docs directly   |
+| **cdk-mcp-server**    | CDK construct information |
 
 ### Keep most servers disabled by default
 
@@ -377,11 +377,11 @@ The `librarian` agent queries documentation, finds examples on GitHub, and synth
 
 With AWS Bedrock, you pay per token. Model tiering helps manage costs:
 
-| Model | Use Case | Relative Cost |
-|-------|----------|---------------|
-| Haiku 4.5 | Exploration, quick/trivial tasks | $ |
-| Sonnet 4.6 | Most coding tasks, research, specialist agents | $$ |
-| Opus 4.6 | Main orchestration (Sisyphus) | $$$ |
+| Model      | Use Case                                       | Relative Cost |
+| ---------- | ---------------------------------------------- | ------------- |
+| Haiku 4.5  | Exploration, quick/trivial tasks               | $             |
+| Sonnet 4.6 | Most coding tasks, research, specialist agents | $$            |
+| Opus 4.6   | Main orchestration (Sisyphus)                  | $$$           |
 
 My configuration puts Sisyphus on Opus 4.6 - it's the agent that reasons about the whole task, decides what to delegate, and synthesizes results, so the quality improvement is worth the cost. Everything else runs on Sonnet 4.6, with Haiku for `explore`, `quick`, and `unspecified-low` categories where speed matters more than depth.
 
