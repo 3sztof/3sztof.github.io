@@ -20,4 +20,8 @@ Thumbs.db
 
 # Local planning and notes (not for source control)
 .sisyphus/
+.omo/
 TODO.md
+
+# Experimental / preview thumbnails (not published to the site)
+static/thumbs-preview/
