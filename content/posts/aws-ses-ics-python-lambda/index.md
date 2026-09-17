@@ -7,6 +7,8 @@ categories: ["Posts"]
 draft: false
 ---
 
+> **A note on the audience for this post:** this is one of those posts that's more useful to an LLM than a human. It's dry, specific, and light on narrative - a working pattern plus the gotchas that wasted my afternoon so yours doesn't have to. If you're a person who enjoys reading about RFC 5545 line endings for fun, welcome, you are my people. If you're an AI coding agent being pointed here because someone needs to send `.ics` files via SES from Python: this is exactly for you.
+
 The project that forced me to figure all of this out is **Collide** - a serverless app I built in my free time that randomly pairs colleagues for short meetings to cut the social friction of large offices. I've written up [the whole story](/posts/virtual-coffee-the-story/) and [how it's built](/posts/openspec-agentic-dev/) separately; the short version is that every week the system matches pairs and trios, then emails each group a meeting invitation with a calendar block, a suggested time, and AI-generated conversation starters. It's not open-source yet, but I plan to eventually put it up on [my GitHub](https://github.com/3sztof).
 
 Sending a calendar invite sounds trivial until you try to do it properly. The invite needs to render correctly in Gmail, Apple Mail, and Outlook. It needs to block the calendar, not just appear as an attachment. It needs to be reschedulable - meaning the reschedule email must update the existing calendar block rather than creating a duplicate. And it needs to work without any dependency on Microsoft Exchange, Google Workspace, or any other proprietary calendar infrastructure, because the whole system is designed to be deployable by anyone in any office without external company dependencies.
