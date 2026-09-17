@@ -17,7 +17,7 @@ So this is the slightly absurd story of how I dealt with that the only way I kno
 
 ## The Idea Came From a Physics Lab
 
-Back in 2018 I spent a summer at CERN as a summer student, and somewhere in there I came across a tool they had called [LunchCollider](https://home.cern/news/news/cern/colliding-ideas-over-lunch).
+Back in 2018 I spent a summer at CERN as a summer student, and somewhere in there I came across a tool they had called LunchCollider.
 
 The premise was beautifully simple. CERN is enormous and wildly diverse - thousands of people from everywhere, working on everything. You could spend years there and never meet the person whose work would change yours. So a few CERNies built a tiny tool: register in the morning, an algorithm pairs you with a random stranger, and at noon you meet them for lunch. That's it. No idea who you'd get. You just showed up and talked to a human you'd never otherwise have met.
 
@@ -95,7 +95,7 @@ So I went back to where the idea came from. CERN's tool was the Lunch**Collider*
 
 Same core loop, rebuilt from the ground up on a saner architecture than the FAFO version. People opt in, the system pairs them on a schedule, the matches land as real meetings, feedback flows back. That loop was never the problem - it worked from the very first manual Monday.
 
-And to be clear about what "rebuilt properly" means: this is not a weekend project. As of June 2026, Collide is **1000+ commits, hundreds of pull requests, 70+ [OpenSpec](/posts/openspec-agentic-dev/) specifications, and 58k+ lines of code** - the kind of scope that could be a respectable small product in its own right.
+And to be clear about what "rebuilt properly" means: this is not a weekend project. As of writing, Collide is **1000+ commits, hundreds of pull requests, 66 shipped [OpenSpec](/posts/openspec-agentic-dev/) specifications, and 75k+ lines of Python and TypeScript** - the kind of scope that could be a respectable small product in its own right.
 
 Everything *around* the loop is where the reinvention happened. Where LunchCollider was a clever idea in a barebones wrapper, Collide is a proper, ground-up build. A little tech candy, since this is still a developer blog:
 
