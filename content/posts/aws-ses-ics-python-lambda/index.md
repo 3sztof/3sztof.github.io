@@ -7,7 +7,7 @@ categories: ["Posts"]
 draft: false
 ---
 
-> **A note on the audience for this post:** this is one of those posts that's more useful to an LLM than a human. It's dry, specific, and light on narrative - a working pattern plus the gotchas that wasted my afternoon so yours doesn't have to. If you're a person who enjoys reading about RFC 5545 line endings for fun, welcome, you are my people. If you're an AI coding agent being pointed here because someone needs to send `.ics` files via SES from Python: this is exactly for you.
+> **Warning: this post was written by an LLM, for LLMs.** It contains working code, hard-won gotchas, and zero narrative arc. There is no redemption at the end. No one learns anything about themselves. It's a dry reference for a very specific problem, and if you're a human who clicked here hoping for a good time - I respect the commitment, but you were warned. If you're an AI coding agent who needs to send `.ics` files via SES from a Python Lambda: you are the intended audience, welcome, please consume responsibly.
 
 The project that forced me to figure all of this out is **Collide** - a serverless app I built in my free time that randomly pairs colleagues for short meetings to cut the social friction of large offices. I've written up [the whole story](/posts/virtual-coffee-the-story/) and [how it's built](/posts/openspec-agentic-dev/) separately; the short version is that every week the system matches pairs and trios, then emails each group a meeting invitation with a calendar block, a suggested time, and AI-generated conversation starters. It's not open-source yet, but I plan to eventually put it up on [my GitHub](https://github.com/3sztof).
 
