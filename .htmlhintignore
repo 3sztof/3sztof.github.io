@@ -1,0 +1,7 @@
+# HTMLHint does not understand Go/Hugo template syntax ({{ ... }}), so it emits
+# false positives (e.g. attr-no-duplication / tag-pair) on conditional
+# attributes inside <a>, <img>, etc. These directories hold Hugo templates,
+# not plain HTML, so exclude them from HTMLHint. Hugo itself validates them.
+layouts/
+themes/
+public/
