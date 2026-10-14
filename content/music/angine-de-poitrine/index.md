@@ -26,6 +26,8 @@ This was recorded live in Rennes, France, during **Trans Musicales** in December
 
 ## Who they are
 
+![Studio portrait of Angine de Poitrine: two masked figures seated cross-legged in polka-dot costumes against polka-dot backdrops](band.webp "Khn (left, gold rope wig) and Klek de Poitrine in their polka-dot costumes and masks. Photo: Constantin Monfilliette.")
+
 **Angine de Poitrine** is a duo from **Chicoutimi, in the Saguenay region of Quebec, Canada**. The two members perform as **Khn de Poitrine** (guitar/bass/looper) and **Klek de Poitrine** (drums). Real names unknown - they are committed to keeping it that way, and that's exactly as it should be.
 
 They've played together since they were 13. The band itself formed in 2019 almost by accident - a friend who managed a venue had a slot to fill, they'd already played there that week under a different project, so they invented the masked costumes to disguise themselves. *"The costumes were initially a joke,"* Klek told Noize Magazine. They kept the joke going for about seven years, and here we are.
