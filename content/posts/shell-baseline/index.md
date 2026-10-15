@@ -19,33 +19,49 @@ I checked my own [Atuin](/til/atuin/) stats before writing this, to make sure I 
 eval "$(zoxide init zsh)"   # aliases cd if you want it to
 ```
 
+![zoxide jumping between directories by a fragment of their path](demo-zoxide.gif "`z api` then `z web` - zoxide jumps to the best match")
+
 ## ripgrep - search that keeps up
 
 [ripgrep](https://github.com/BurntSushi/ripgrep) (`rg`) is a recursive search tool that respects `.gitignore` by default and is fast enough that I never think about whether a search is worth running. I reach for it constantly. `rg TODO`, `rg -t py def`, `rg -l pattern` to list files - it has replaced `grep -r` entirely, and it's what my editor and most of my scripts shell out to under the hood.
+
+![ripgrep searching a project for TODO and a Python pattern](demo-ripgrep.gif "`rg TODO`, then a type-filtered `rg -t py`")
 
 ## fd - `find` without the manpage
 
 [fd](https://github.com/sharkdp/fd) is a friendlier `find`: `fd config` instead of `find . -name '*config*'`. Sensible defaults (skips `.git`, respects `.gitignore`), colored output, regex or glob. It pairs with the others - `fd -e md | fzf` to pick a markdown file, or as fzf's own file-walker.
 
+![fd finding files by name and extension](demo-fd.gif "`fd server`, then `fd -e py`")
+
 ## bat - `cat` with syntax highlighting
 
 [bat](https://github.com/sharkdp/bat) is `cat` with syntax highlighting, line numbers, and git-change markers in the gutter. I alias `cat=bat` on personal machines. It also makes a good pager, and it's my go-to fzf previewer once I wire it up (`--preview 'bat --color=always {}'`) - that's a config choice, not automatic, but it's the first thing I set.
+
+![bat printing a Python file with syntax highlighting and line numbers](demo-bat.gif "`bat` on a source file - highlighting, line numbers, a file header")
 
 ## fzf - fuzzy-find anything
 
 [fzf](https://github.com/junegunn/fzf) turns any list into an interactive filter. The shell bindings earn their keep on their own - `Ctrl-T` to drop a file into the current command, `**<Tab>` completion - but the real use is piping anything into it: `git branch | fzf`, `kubectl get pods | fzf`. It's the picker that zoxide's `zi` and plenty of my own one-liners are built on.
 
+![fzf fuzzy-filtering a piped list of files](demo-fzf.gif "files piped into fzf, filtered by typing a few characters")
+
 ## starship - a prompt that just works
 
 [Starship](https://starship.rs/) is a cross-shell prompt that shows what I care about without a weekend of config: git branch and dirty state, the language version for the current directory, and how long the last command took. By default it turns the prompt character red on a failed command; if you want the numeric exit code you enable the `status` module (it's off by default). Fast, identical across zsh/bash/fish, and the defaults are good enough that I barely touch `starship.toml`.
+
+![starship prompt showing git branch and a dirty-state indicator](demo-starship.gif "the prompt picks up the branch and flips to a dirty indicator after an edit")
 
 ## yazi - a terminal file manager
 
 [yazi](https://github.com/sxyazi/yazi) is a quick terminal file manager with vim-style keys, image and text previews (its own built-in highlighter), and async everything. I reach for it when I want to *browse* rather than `ls`/`cd` - sorting downloads, poking through an unfamiliar repo, bulk-renaming. It has fzf-style filtering and zoxide jumps built in, so it fits the rest of the set.
 
+![yazi terminal file manager navigating a project with a live preview pane](demo-yazi.gif "yazi: navigate with hjkl, preview on the right")
+
 ## tldr - the examples you actually wanted
 
-[tldr](https://tldr.sh/) gives you the handful of real examples instead of a 400-line man page. `tldr tar` tells me the extract incantation in two seconds. It doesn't replace `man` for depth, but it replaces the "how do I use this again?" web search almost entirely.
+[tldr](https://tldr.sh/) gives you the handful of real examples instead of a 400-line man page. `tldr tar` tells me the extract incantation in two seconds. It doesn't replace `man` for depth, but it replaces the "how do I use this again?" web search almost entirely. I use the [tealdeer](https://github.com/tealdeer-rs/tealdeer) client - a fast, cached Rust implementation of tldr - so the pages are local and instant.
+
+![tldr showing a concise tar cheatsheet](demo-tldr.gif "`tldr tar` via tealdeer - the examples, not the manual")
 
 ## And Atuin, on top of all this
 
@@ -62,6 +78,6 @@ These days a new machine isn't comfortable until the coding agent is on it too, 
 One note on the [bootstrap script](https://gist.github.com/3sztof/0d3f5c30510fcb8be23273bbbe1413ba): it still installs `tmux`, but I've since moved to [Zellij](/til/zellij/) (and I'm [eyeing cmux](/til/cmux/)), so treat that line as legacy. Everything else I'd install again today without thinking.
 
 - [My shell setup bootstrap script](https://gist.github.com/3sztof/0d3f5c30510fcb8be23273bbbe1413ba) - installs most of these in one go (ripgrep and fd come from your package manager)
-- [zoxide](https://github.com/ajeetdsouza/zoxide) · [ripgrep](https://github.com/BurntSushi/ripgrep) · [fd](https://github.com/sharkdp/fd) · [bat](https://github.com/sharkdp/bat) · [fzf](https://github.com/junegunn/fzf) · [starship](https://starship.rs/) · [yazi](https://github.com/sxyazi/yazi) · [tldr](https://tldr.sh/)
+- [zoxide](https://github.com/ajeetdsouza/zoxide) · [ripgrep](https://github.com/BurntSushi/ripgrep) · [fd](https://github.com/sharkdp/fd) · [bat](https://github.com/sharkdp/bat) · [fzf](https://github.com/junegunn/fzf) · [starship](https://starship.rs/) · [yazi](https://github.com/sxyazi/yazi) · [tealdeer](https://github.com/tealdeer-rs/tealdeer)
 - [Atuin](/til/atuin/) - the shell-history piece, written up on its own
 - [My pi setup, as a gist](https://gist.github.com/3sztof/c94b9b1176085e79fcfa06100b9a1374) - the coding agent that goes on the same box
