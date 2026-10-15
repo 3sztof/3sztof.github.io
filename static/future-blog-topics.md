@@ -43,6 +43,23 @@ When something ships, move it to "Shipped from this backlog".
   change follow the repo's standards, and does it match the spec it came from? Angle: review is two different
   questions, and splitting them beats one muddled pass.
 
+- **A Valheim dedicated server as cost-optimised IaC** - my [aws-cdk-valheim-server](https://github.com/3sztof/aws-cdk-valheim-server)
+  wraps the community [lloesche/valheim-server-docker](https://github.com/lloesche/valheim-server-docker) image (which runs
+  IronGate's official Valheim dedicated server) on EC2 via AWS CDK: S3 backups, a CloudWatch idle-alarm -> Lambda
+  auto-stop, a public API Gateway + Python Lambda REST API to start/stop/status, and optional Discord lifecycle hooks.
+  Angle: a game server you only pay for while someone's playing - and crediting the OSS it stands on. Public repo, ready to write.
+
+- **ToneBot: plain English to a guitar amp preset** - [tonebot](https://github.com/3sztof/tonebot) takes a tone described
+  in words and emits a ready-to-push preset for the Positive Grid Spark 2. Angle: an LLM as a translation layer from
+  natural language to domain hardware, tied to the [Angine de Poitrine](/music/angine-de-poitrine/) music thread.
+  **Caveat: the project is currently abandoned - needs real work on my end before this is honest to publish.**
+
+- **Bridging an observability gap with an OpenTelemetry connector** - a small OTel connector I built to get
+  telemetry out of a tool that didn't export it cleanly. Angle: when a product has a blind spot, a thin OTel
+  bridge beats waiting for first-party support - what the connector maps, and the gotchas of shimming OTel onto
+  something that wasn't designed for it. **Gate: must open-source the connector first, and clear employer review
+  before anything is written - keep it tool-agnostic and leak nothing internal (same bar as the pi gist).**
+
 ## To revisit
 
 - **`async-python-concurrency` voice pass** - it reads as a conference recap rather than first person.
