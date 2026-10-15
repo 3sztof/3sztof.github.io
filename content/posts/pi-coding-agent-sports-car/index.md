@@ -63,8 +63,8 @@ None of this means I run pi bare. I spent the afternoon fitting parts, and the d
 
 **Two hand-written extensions:**
 
-- `safety-guard.ts` (90 lines), ported from my codex hook. It blocks recursive force deletes in any spelling, git hook bypasses, `git push` and full environment dumps. I later found that sub-agents and side-conversation sessions don't load extensions by default, so I wired the guard into those explicitly and tested it.
-- `local-provider.ts` (115 lines), a custom provider that discovers models live from a local OpenAI-compatible endpoint.
+- `safety-guard.ts`, ported from my codex hook. It blocks recursive force deletes in any spelling, git hook bypasses, pushes to `main`/`master` or without an explicit branch (named feature-branch pushes are fine), and full environment dumps. I later found that sub-agents and side-conversation sessions don't load extensions by default, so I wired the guard into those explicitly and tested it.
+- `local-provider.ts`, a custom provider that discovers models live from a local OpenAI-compatible endpoint.
 
 **Packages, picked one at a time:**
 
@@ -75,7 +75,7 @@ None of this means I run pi bare. I spent the afternoon fitting parts, and the d
 
 **Parts I took back off.** Two packages I installed duplicated things I already had, so they're disabled. The AWS skills sit behind a single router skill instead of 16 prompt entries. Those changes cut the tool definitions from 67 KiB to 42 KiB and the skill listing from 29 KiB to 10 KiB per request. That's the kind of tuning I never did on the tanks, because I couldn't see where the weight was.
 
-The whole config is tracked in my dotfiles, so a new machine gets the same car.
+The whole config is tracked in my dotfiles, so a new machine gets the same car. If you want the actual files - `settings.json`, the two extensions, the `/btw` guard, the skill router and the rest - I've [published them as a gist](https://gist.github.com/3sztof/c94b9b1176085e79fcfa06100b9a1374) with a README that walks an agent through rebuilding the setup on a fresh box. MCP servers are left out on purpose - you add those per machine.
 
 ## Should you switch?
 
@@ -84,5 +84,6 @@ If you're happy with your agent, probably not. If you've noticed that you config
 - [pi.dev](https://pi.dev) - homepage and docs
 - [earendil-works/pi](https://github.com/earendil-works/pi) - source
 - [pi packages](https://pi.dev/packages) - extensions, skills and themes from the community
+- [My pi setup, as a gist](https://gist.github.com/3sztof/c94b9b1176085e79fcfa06100b9a1374) - config files + a rebuild README
 
 <sub>Thumbnail: pi logo from [pi.dev](https://pi.dev).</sub>
