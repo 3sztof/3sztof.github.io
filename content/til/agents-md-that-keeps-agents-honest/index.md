@@ -1,5 +1,5 @@
 ---
-title: "The system prompt that keeps my AI coding agent honest"
+title: "AGENTS.md: the system prompt that keeps my AI coding agent honest"
 date: 2026-09-07
 description: "A single global AGENTS.md - built on the failure modes Karpathy called out in his viral AI-coding rant - is what keeps my agent from making wrong assumptions, overcomplicating, and quietly wrecking things it didn't understand. Here's the whole file."
 tags: ["ai", "agentic-development", "opencode", "productivity", "tools", "prompt-engineering"]

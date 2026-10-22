@@ -5,5 +5,9 @@
   <link rel="stylesheet" href="{{ $custom.RelPermalink }}" integrity="{{ $custom.Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
 
-<!-- AI scraping / training opt-out -->
-<meta name="robots" content="noai, noimageai, max-snippet:0">
+<!-- AI scraping / training opt-out (NOT max-snippet: we still want Google text snippets) -->
+<meta name="robots" content="noai, noimageai">
+
+<!-- theme-color: Blowfish's head.html emits an empty one; this later tag wins -->
+<meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: dark)">

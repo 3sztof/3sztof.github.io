@@ -1,5 +1,5 @@
 ---
-title: "The spec is the bottleneck, not the AI"
+title: "The spec is the bottleneck, not the AI: spec-driven development with OpenSpec"
 date: 2026-07-22
 description: "After building a non-trivial serverless product almost entirely with AI-assisted coding, the clearest lesson is: the AI is fast. The specification is the constraint."
 tags: ["openspec", "agentic-development", "ai", "software-design", "productivity"]

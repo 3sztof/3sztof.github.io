@@ -1,5 +1,5 @@
 ---
-title: "The shell tools I install before I feel at home"
+title: "My modern shell setup: the CLI tools I install before I feel at home"
 date: 2026-10-14
 description: "zoxide, starship, bat, ripgrep, fd, fzf, yazi, and tldr - the handful of CLI upgrades I bootstrap onto every new box, with Atuin on top. Small tools, picked deliberately."
 tags: ["shell", "cli", "tools", "productivity", "zoxide", "ripgrep", "fd", "fzf", "yazi"]

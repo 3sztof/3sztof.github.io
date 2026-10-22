@@ -1,5 +1,5 @@
 ---
-title: "Tired of driving a tank? Try pi"
+title: "Tired of driving a tank? Try pi, a minimal AI coding agent"
 date: 2026-10-07
 description: "My coding agents turned into tanks: dozens of MCP servers, sub-agent crews, gigabytes of state. pi is the opposite - an engine, four wheels, and whatever you bolt on yourself."
 tags: ["ai", "agentic-development", "pi", "opencode", "tools", "productivity"]

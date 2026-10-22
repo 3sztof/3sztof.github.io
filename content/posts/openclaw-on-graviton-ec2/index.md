@@ -1,5 +1,5 @@
 ---
-title: "I take it back: OpenClaw wants a boring always-on box"
+title: "I take it back: OpenClaw runs better on a boring always-on EC2 box"
 date: 2026-10-06
 description: "A follow-up to my AgentCore TIL. Serverless OpenClaw loses most of what makes it interesting. I moved mine to a single Graviton EC2 instance, and now it extends itself, keeps long-term memory, and dreams."
 tags: ["openclaw", "aws", "bedrock", "ec2", "graviton", "pulumi", "ai", "agents"]
