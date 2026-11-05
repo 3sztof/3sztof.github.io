@@ -1,0 +1,50 @@
+---
+name: Prose checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  em-dash-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      # On a PR: diff the PR range. On a push: diff against the previous commit.
+      # Only NEW em-dashes (added lines) fail the build, so untouched content
+      # (e.g. vendored theme files) never blocks merges.
+      - name: Check for em-dashes in new lines
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          guard() { python3 scripts/check_no_em_dash.py --stdin; }
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            RANGE="$BASE_SHA...HEAD"
+          else
+            BEFORE="$BEFORE_SHA"
+            # New branch or orphan commit: fall back to the empty tree.
+            if [ -z "$BEFORE" ] \
+               || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+              BEFORE=$(git hash-object -t tree /dev/null)
+            fi
+            RANGE="$BEFORE HEAD"
+          fi
+          # shellcheck disable=SC2086
+          git diff $RANGE --unified=0 --no-color | guard

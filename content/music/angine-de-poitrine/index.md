@@ -56,7 +56,7 @@ Khn's stated goal with the quarter tones is to **use them as full vocabulary mem
 
 > *"My idea was definitely to see how to get that kind of slightly Arabic-sounding colour. But I quickly moved towards a more modal approach, to try and exploit the potential for dissonance it offers, without falling into things that are very stereotypical and reminiscent of a culture that, ultimately, isn't mine. My musical background is very much rooted in progressive rock, modern jazz, and contemporary music. It's just natural for me to use quarter tones in a language that's more cubist, let's say, more Zappa-esque in its phrasing. The way I use quarter tones allows me to explore chromatic approaches that are twice as long and then build more tension. But ultimately, most of the tunes we make could be harmonically compared to something along the lines of the tunes on John Scofield's Überjam or Miles Davis's So What."*
 >
-> — Khn de Poitrine, [Noize Magazine](https://www.noizemagazine.com/blog/angine-de-poitrine-a-discussion-with-the-infectious-quebec-band)
+> \- Khn de Poitrine, [Noize Magazine](https://www.noizemagazine.com/blog/angine-de-poitrine-a-discussion-with-the-infectious-quebec-band)
 
 That last comparison is key to why this music is actually listenable. The harmonic language is grounded in jazz-modal thinking - *So What* is famously approachable despite being modal and relatively static harmonically. The quarter tones add texture and dissonance without the music ever losing its center of gravity. It sounds foreign and familiar at the same time.
 
@@ -74,7 +74,7 @@ Khn on what the looper actually does to the music:
 
 > *"Our musical concept is definitely based on [the looper], to the point that it becomes an instrument in itself. For me, it's a demanding task in terms of mastering the tool... it creates really significant limitations, not only in terms of arrangements, but also in the song's structure... What I find interesting is that it inevitably leads us into an aesthetic territory somewhat reminiscent of techno music."*
 >
-> — Khn de Poitrine, [Noize Magazine](https://www.noizemagazine.com/blog/angine-de-poitrine-a-discussion-with-the-infectious-quebec-band)
+> \- Khn de Poitrine, [Noize Magazine](https://www.noizemagazine.com/blog/angine-de-poitrine-a-discussion-with-the-infectious-quebec-band)
 
 And on the hardest part of the whole setup: *"handling the loop pedal while playing the double-necked microtonal guitar"* - while nearly blind inside a papier-mâché mask. The metronome on that pedalboard is not a suggestion.
 
@@ -84,7 +84,7 @@ JazzTimes editor David R. Adler described it best:
 
 > *"Klek's drumming is unfailingly deep in the pocket, never stiff, but rather elastic as it undergirds Khn's layered, superimposed guitar/bass riffs, which shift like fractals, with jagged shapes breaking in all directions. The beats are infectious no matter how abstruse and unstable."*
 >
-> — David R. Adler, [JazzTimes](https://www.jazztimes.com/features/profiles/the-off-world-aesthetic-of-quebecs-angine-de-poitrine/)
+> \- David R. Adler, [JazzTimes](https://www.jazztimes.com/features/profiles/the-off-world-aesthetic-of-quebecs-angine-de-poitrine/)
 
 The rhythmic vocabulary sits in the overlap of prog, math rock, and mathcore for the composed sections, over a foundation that PAN M 360 described as "tribal grooves immersed in a thick magma of effects pedals." Klek's stated primary influence is **Gentle Giant** - the 1970s prog band who opened for Black Sabbath and got booed, which is exactly the right reference point for someone who plays like this.
 

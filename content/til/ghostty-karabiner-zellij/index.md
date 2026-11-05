@@ -47,7 +47,7 @@ Ghostty intercepts some combinations before the running application sees them:
 - `Cmd+w` → close tab
 - `Cmd+<number>` → switch tab
 
-The `Cmd+arrow` ↔ `Option+arrow` swap from Karabiner means a logical `Cmd+Right` (end of line in text) arrives at Ghostty as a physical `Option+Right`. In a terminal, `Option+Right` emits the escape sequence `ESC f` (the standard sequence for "move word forward"), which Zellij interprets as `Alt+f` — its toggle for floating panes. This was causing floating panes to open every time I moved to the end of a line.
+The `Cmd+arrow` ↔ `Option+arrow` swap from Karabiner means a logical `Cmd+Right` (end of line in text) arrives at Ghostty as a physical `Option+Right`. In a terminal, `Option+Right` emits the escape sequence `ESC f` (the standard sequence for "move word forward"), which Zellij interprets as `Alt+f`, its toggle for floating panes. This was causing floating panes to open every time I moved to the end of a line.
 
 My resolution for Ghostty: nothing in its config. Accept that `Cmd+t` opens a new Ghostty tab rather than reaching Zellij's tab mode, and remap Zellij instead.
 

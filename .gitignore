@@ -25,3 +25,6 @@ TODO.md
 
 # Experimental / preview thumbnails (not published to the site)
 static/thumbs-preview/
+
+# Playwright CLI logs / snapshots
+.playwright-cli/

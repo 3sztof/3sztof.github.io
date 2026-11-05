@@ -1,0 +1,17 @@
+---
+# Pre-commit hooks for the blog.
+#
+# Install once:   pre-commit install
+# Run manually:   pre-commit run --all-files
+#
+# The em-dash guard is diff-aware: it only fails on em-dashes in NEWLY added
+# lines, so untouched content (e.g. vendored theme files) never blocks commits.
+
+repos:
+  - repo: local
+    hooks:
+      - id: no-em-dash
+        name: no em-dashes in new lines
+        entry: python3 scripts/check_no_em_dash.py
+        language: system
+        pass_filenames: false

@@ -10,7 +10,7 @@ tags: ["AWS", "Cloud", "Security", "SecOps", "DevOps", "Auto-Remediation"]
 - **Topic**: SecOps on AWS: Large Scale Cloud Threat Prevention, Detection and Auto-Remediation
 - **Language**: English
 
-This session introduced listeners to the concept of SecOps (DevSecOps) and addressed the scale of cloud threat detection and prevention that requires proper automation. I discussed the most important AWS security automation solutions and shared a customer success story from a large polymer manufacturing business that had been targeted by state-sponsored hackers attempting to steal their technology — a real project that I have delivered as a part of AWS Professional Services. The presentation demonstrated how automated security solutions can effectively protect cloud environments against sophisticated, large scale threats.
+This session introduced listeners to the concept of SecOps (DevSecOps) and addressed the scale of cloud threat detection and prevention that requires proper automation. I discussed the most important AWS security automation solutions and shared a customer success story from a large polymer manufacturing business that had been targeted by state-sponsored hackers attempting to steal their technology. It was a real project that I have delivered as a part of AWS Professional Services. The presentation demonstrated how automated security solutions can effectively protect cloud environments against sophisticated, large scale threats.
 
 ## Event
 
