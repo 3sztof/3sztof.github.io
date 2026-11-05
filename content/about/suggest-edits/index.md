@@ -47,7 +47,7 @@ Here's an example of a well-formatted issue:
 Title: Typo on About page - "descriptn" should be "description"
 
 Description:
-On the About page (https://3sztof.github.io/about/page/), 
+On the About page (https://3sztof.github.io/posts/about-this-site/), 
 there's a typo in the second paragraph:
 
 Current text: "TODO: add a descriptn how this site is built"

@@ -2,7 +2,7 @@
 name = "Blog"
 url = "/all/"
 identifier = "9ZEIG7GoKx"
-weight = 1
+weight = 2
 
 [[main]]
 name = "Tags"
@@ -13,21 +13,27 @@ weight = 1
 [[main]]
 name = "Speaking"
 pageRef = "speaking"
-weight = 3
+weight = 4
 
 [[main]]
 name = "Music"
 pageRef = "music"
-weight = 4
+weight = 5
 
 [[main]]
 name = "TIL"
 pageRef = "til"
-weight = 2
+weight = 3
+
+[[main]]
+name = "About Me"
+pageRef = "about/author"
+identifier = "about-me-main"
+weight = 1
 
 [[footer]]
 name = "About This Site"
-pageRef = "about/page"
+pageRef = "posts/about-this-site"
 identifier = "9ZEIG7GoKx"
 weight = 2
 

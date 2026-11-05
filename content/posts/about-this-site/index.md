@@ -3,6 +3,8 @@ title: "About This Site"
 date: 2026-03-09
 draft: false
 description: "How this site is built and deployed"
+aliases: ["/about/page/"]
+categories: ["Development"]
 tags: ["about", "hugo", "blowfish", "github", "static-site", "nodejs", "github-actions", "web-development"]
 ---
 
