@@ -40,24 +40,24 @@ I regularly speak at Python and cloud conferences across Europe. My rated talks 
 
 | Year | Event | Role | Topic |
 |------|-------|------|-------|
-| 2026 | [PyCon Wrocław](https://www.pyconwroclaw.com/) | Speaker & Program Committee Member | Would you accept this PEP? |
-| 2026 | [Warsaw Python Pizza](https://warsaw.python.pizza/) | Speaker | Beat the Pareto Principle: Let AI Handle the How, So You Can Focus on the Why |
-| 2026 | [AWS HouseWarming Warsaw](https://awshousewarmingwarsaw2026.splashthat.com/) | Workshop Co-host | Hands-on AWS workshop |
-| 2026 | [Warsaw IT Days](https://warszawskiedniinformatyki.pl/en/) | Speaker | Monads in Python: Math Hell or Pure Perfection? |
-| 2025 | [PyCon Wrocław 2025](https://2025.pyconwroclaw.com/) | Speaker | Async Python: Concurrency without the Headaches |
-| 2025 | [EuroPython 2025](https://ep2025.europython.eu/) | Speaker | Async Python: Concurrency without the Headaches |
-| 2025 | [AWS Summit Poland](https://aws.amazon.com/events/summits/poland/) | Workshop Host | Reducing Hallucinations in Generative AI Applications |
-| 2025 | [Warsaw IT Days](https://warszawskiedniinformatyki.pl/en/) | Speaker | Async Python: Concurrency without the Headaches |
-| 2024 | [PyCon PL 2024](https://pl.pycon.org/2024/en/) | Speaker | AWS Lambda Powertools and Pydantic |
-| 2024 | [PyCon Wrocław 2024](https://2024.pyconwroclaw.com/) | Speaker | Building CLIs in 2024 (feat. uv and Typer) |
-| 2024 | [Python Summit Warsaw](https://pythonsummit.org/en/) | Speaker | Building CLIs in 2024 (feat. uv and Typer) |
-| 2024 | [Andersen DevOps Meetup](https://people.andersenlab.com/events/devops-meetup-andersen-with-aws) | Speaker | Scaling on AWS for Your First 10 Million Users |
-| 2023 | [Tech to the Rescue - Air Quality Hackathon](https://www.techtotherescue.org/) | AWS Hack-Mentor | AWS Cloud & ML guidance for 170+ teams across 27 countries |
-| 2023 | [Perspektywy Women in Tech Summit](https://2023.womenintechsummit.pl/) | Workshop Organizer | Learn Python on AWS (~40 attendees) |
-| 2022 | [CodeEurope](https://www.codeeurope.pl/) | Speaker | SecOps on AWS: Large Scale Cloud Threat Prevention, Detection and Auto-Remediation |
-| 2022 | [AWS Cloud Thursday (Twitch)](https://www.twitch.tv/awspolska) | Guest Speaker | AWS CDK (Polish) |
+| 2026 | [PyCon Wrocław](https://www.pyconwroclaw.com/) | Speaker & Program Committee Member | [Would you accept this PEP?](/speaking/2026-pycon-wroclaw/) |
+| 2026 | [Warsaw Python Pizza](https://warsaw.python.pizza/) | Speaker | [Beat the Pareto Principle: Let AI Handle the How, So You Can Focus on the Why](/speaking/2026-warsaw-python-pizza/) |
+| 2026 | [AWS HouseWarming Warsaw](https://awshousewarmingwarsaw2026.splashthat.com/) | Workshop Co-host | [Hands-on AWS workshop](/speaking/2026-aws-housewarming/) |
+| 2026 | [Warsaw IT Days](https://warszawskiedniinformatyki.pl/en/) | Speaker | [Monads in Python: Math Hell or Pure Perfection?](/speaking/2026-warsaw-it-days/) |
+| 2025 | [PyCon Wrocław 2025](https://2025.pyconwroclaw.com/) | Speaker | [Async Python: Concurrency without the Headaches](/speaking/2025-pycon-wroclaw/) |
+| 2025 | [EuroPython 2025](https://ep2025.europython.eu/) | Speaker | [Async Python: Concurrency without the Headaches](/speaking/2025-europython/) |
+| 2025 | [AWS Summit Poland](https://aws.amazon.com/events/summits/poland/) | Workshop Host | [Reducing Hallucinations in Generative AI Applications](/speaking/2025-aws-summit-poland/) |
+| 2025 | [Warsaw IT Days](https://warszawskiedniinformatyki.pl/en/) | Speaker | [Async Python: Concurrency without the Headaches](/speaking/2025-warsaw-it-days/) |
+| 2024 | [PyCon PL 2024](https://pl.pycon.org/2024/en/) | Speaker | [AWS Lambda Powertools and Pydantic](/speaking/2024-pycon-poland/) |
+| 2024 | [PyCon Wrocław 2024](https://2024.pyconwroclaw.com/) | Speaker | [Building CLIs in 2024 (feat. uv and Typer)](/speaking/2024-pycon-wroclaw/) |
+| 2024 | [Python Summit Warsaw](https://pythonsummit.org/en/) | Speaker | [Building CLIs in 2024 (feat. uv and Typer)](/speaking/2024-python-summit/) |
+| 2024 | [Andersen DevOps Meetup](https://people.andersenlab.com/events/devops-meetup-andersen-with-aws) | Speaker | [Scaling on AWS for Your First 10 Million Users](/speaking/2024-andersen-devops-meetup/) |
+| 2023 | [Tech to the Rescue - Air Quality Hackathon](https://www.techtotherescue.org/) | AWS Hack-Mentor | [AWS Cloud & ML guidance for 170+ teams across 27 countries](/speaking/2023-air-quality-hackathon/) |
+| 2023 | [Perspektywy Women in Tech Summit](https://2023.womenintechsummit.pl/) | Workshop Organizer | [Learn Python on AWS (~40 attendees)](/speaking/2023-women-in-tech-summit/) |
+| 2022 | [CodeEurope](https://www.codeeurope.pl/) | Speaker | [SecOps on AWS: Large Scale Cloud Threat Prevention, Detection and Auto-Remediation](/speaking/2022-code-europe/) |
+| 2022 | [AWS Cloud Thursday (Twitch)](https://www.twitch.tv/awspolska) | Guest Speaker | [AWS CDK (Polish)](/speaking/2022-streaming-with-aws/) |
 | 2022 | Warsaw University of Technology | Guest Lecturer | Introduction to AWS Cloud |
-| 2019 | [HackYeah](https://hackyeah.pl/) | Mentor | Bosch Rexroth challenge |
+| 2019 | [HackYeah](https://hackyeah.pl/) | Mentor | [Bosch Rexroth challenge](/speaking/2019-hackyeah-hackathon/) |
 
 **Selected recordings:**
 - [EuroPython 2025 - Async Python: Concurrency without the Headaches](https://youtu.be/dynFJWVqsa4?t=3792)
