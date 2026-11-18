@@ -1,6 +1,7 @@
 ---
 title: "Speaker: Warsaw Python Pizza 2026"
 date: 2026-04-23
+draft: false
 description: "Presenting 'Beat the Pareto Principle: Let AI Handle the How, So You Can Focus on the Why' at Warsaw Python Pizza."
 tags: ["Python", "AI", "LLM", "MCP", "Public Speaking", "Conference", "Warsaw", "Python Pizza"]
 ---
