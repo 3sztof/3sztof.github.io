@@ -11,6 +11,8 @@ After a few months of experimenting with AI coding assistants, I've settled on a
 
 > **This post is a snapshot in time.** The agentic tooling ecosystem moves extremely fast - plugin names change, model recommendations shift, new features land weekly. Treat everything here as my current best knowledge as of the `lastmod` date above, not as a permanent reference.
 
+> **Update (October 2026): OpenCode 2 changes a lot of this.** OpenCode 1 plugins don't load in OpenCode 2. Notifications, smart titles and cited web search are now built in, so three plugins below are unnecessary. oh-my-openagent loads but does nothing on OpenCode 2, and Code Mode largely removes the reason to keep MCP servers disabled. The Bedrock setup still applies. See [OpenCode 2 broke five of my nine plugins, and I don't miss most of them](/posts/opencode-v2-migration/) for what changed and how to migrate.
+
 > **Note**: oh-my-opencode was recently renamed to [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent). If you have an existing setup, update your plugin reference from `oh-my-opencode@latest` to `oh-my-openagent@latest` in `opencode.json`. The config file (`oh-my-opencode.json`) name stays the same.
 
 > **A word of caution**: oh-my-openagent is an advanced setup. It significantly changes how Opencode behaves - it introduces a full agent hierarchy, custom hooks, opinionated prompts, and a lot of moving parts. If you're new to Opencode, I'd strongly recommend spending some time with plain Opencode first. Get comfortable with how it works, how models are configured, how sessions behave. Understanding your tooling is the only way to avoid shooting yourself in the foot when something doesn't work as expected.

@@ -120,6 +120,8 @@ Wiring an agent up is intentionally thin. For opencode it's a plugin registratio
 export LLM_WIKI_ROOT="$HOME/Documents/llm-wiki"
 ```
 
+> **Update (October 2026):** the snippet above uses the OpenCode 1 plugin format. OpenCode 2 needs a ported plugin, auto-discovered from `~/.config/opencode/plugins/llm-wiki/index.ts` with no `plugin` entry at all. See [OpenCode 2 broke five of my nine plugins](/posts/opencode-v2-migration/#porting-a-plugin-llm-wiki-as-a-worked-example) for how I ported it.
+
 Every other agent gets its own thin shim against the same `LLM_WIKI_ROOT` and the same `qmd` index. That's the whole trick: one environment variable and one search index, and suddenly every agent is reading and writing the same brain.
 
 The payoff is that "long-term memory" stops being a feature of one tool and becomes a **shared substrate** across my whole workflow. The learnings that are genuinely useful across contexts - how a given codebase is wired, why a design decision was made, the gotcha that cost me an afternoon once - get written once and are reachable from whichever agent I happen to open. That is a strictly better place to keep knowledge than inside any single agent's private memory.
