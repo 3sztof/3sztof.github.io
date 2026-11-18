@@ -1,10 +1,9 @@
 ---
 title: "OpenCode 2 broke five of my nine plugins, and I don't miss most of them"
-date: 2026-10-25
+date: 2026-11-18
 description: "What changed in OpenCode 2, why it's worth the upgrade, which parts of my old plugin-heavy setup are now built in, and how I ported my own plugin to the new API."
 tags: ["opencode", "ai", "agentic-development", "oh-my-openagent", "plugins", "mcp", "tools", "productivity"]
 categories: ["Tools", "AI", "Development"]
-draft: true
 ---
 
 > This is a follow-up to [Supercharging Opencode with AWS Bedrock and Oh-My-Openagent](/posts/opencode-aws-bedrock-setup/) and [LLM Wiki: a compounding knowledge base for your AI coding sessions](/posts/llm-wiki-persistent-agent-memory/). If you set things up from either of those posts, read this one first.
@@ -86,7 +85,7 @@ This is where my nine plugins ended up:
 | `cc-safety-net` | Works | Already ships a V2 build |
 | `opencode-wakatime` | Works | Nothing |
 | `opencode-mem` | Works | Nothing |
-| `oh-my-openagent` | Broken, then a no-op | The cache was stuck on an old release; updated to 5.1.48 (see below) |
+| `oh-my-openagent` | Broken, then a no-op | The cache was stuck on an old release; 5.1.48 loads but does nothing, so I removed it (see below) |
 | `terminal-notifier` | Broken | Removed, replaced by built-in notifications |
 | `smart-title` | Broken | Removed, replaced by the built-in title agent |
 | `opencode-websearch-cited` | Broken | Removed, replaced by built-in web search |
@@ -100,7 +99,6 @@ The plugin list in `opencode.json` is now short. V1's `plugin` key still works, 
     "envsitter-guard@latest",
     "cc-safety-net",
     "opencode-wakatime",
-    "oh-my-openagent@latest",
     "opencode-mem"
   ]
 }
@@ -122,7 +120,9 @@ So the choice today is:
 2. **Move to OmO Native** if you want OmO itself and don't mind a different harness.
 3. **Use OpenCode 2 without OmO's orchestration.** The built-in subagents cover the basic "explore in the background, plan, then build" loop.
 
-I picked the third option and left the plugin in my config, so it starts working on the day upstream ships real V2 support. Given how much I [enjoyed pi](/posts/pi-coding-agent-sports-car/), it's funny that OmO's next home is a pi fork.
+I picked the third option and removed the plugin. Given how much I [enjoyed pi](/posts/pi-coding-agent-sports-car/), it's funny that OmO's next home is a pi fork.
+
+There's also a less technical reason I didn't wait for V2 support. OmO is no longer really an OpenCode plugin project. It's turning into a product: [omo.dev](https://omo.dev) presents it as a tool from Sisyphus Labs, with its own installer, a desktop app in beta and chat integrations on the way. The code is still public, but it's source-available under the Sustainable Use License (SUL-1.0), not open source: personal and internal business use is fine, and commercial redistribution isn't. That's the authors' call to make, and the project is still very active. It's still a little sad to watch one of the most interesting community projects around OpenCode move away from it and towards a commercial product of its own.
 
 ## Porting a plugin: llm-wiki as a worked example
 
@@ -195,7 +195,7 @@ If you're coming from my earlier posts, this is the short version:
 1. Run `opencode plugin list` and grep the log for `failed to load plugin`.
 2. Run `opencode plugin update` to refresh cached packages. Some plugins already ship V2 builds.
 3. Remove `terminal-notifier`, `smart-title` and `opencode-websearch-cited`, and set `"attention": { "notifications": true }` in `~/.config/opencode/cli.json`.
-4. Decide about oh-my-openagent: stay on V1, move to OmO Native, or keep the no-op plugin until V2 support lands.
+4. Decide about oh-my-openagent: stay on V1, move to OmO Native, or remove the no-op plugin as I did.
 5. Move any local plugin to `plugins/<name>/index.ts` and port it, following the [migration guide](https://opencode.ai/v2/docs/build/plugins/migrate-v1).
 6. Re-check `permissions`: external directories are now allowed by default, and `bash`/`task` are now `shell`/`subagent`.
 7. If you manage dotfiles, update them too. My chezmoi repo still had the V1 plugin list and would have put it back on the next `chezmoi apply`.

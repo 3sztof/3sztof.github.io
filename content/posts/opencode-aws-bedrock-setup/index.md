@@ -1,7 +1,7 @@
 ---
 title: "Supercharging Opencode with AWS Bedrock and Oh-My-Openagent"
 date: 2026-02-13
-lastmod: 2026-04-03
+lastmod: 2026-11-18
 description: "A practical guide to configuring Opencode CLI with AWS Bedrock models, oh-my-openagent for multi-agent orchestration, plugins, and skills for faster agentic development"
 tags: ["opencode", "aws-bedrock", "claude", "ai", "agentic-development", "oh-my-openagent", "mcp", "productivity"]
 categories: ["Tools", "AI", "Development"]
@@ -11,7 +11,7 @@ After a few months of experimenting with AI coding assistants, I've settled on a
 
 > **This post is a snapshot in time.** The agentic tooling ecosystem moves extremely fast - plugin names change, model recommendations shift, new features land weekly. Treat everything here as my current best knowledge as of the `lastmod` date above, not as a permanent reference.
 
-> **Update (October 2026): OpenCode 2 changes a lot of this.** OpenCode 1 plugins don't load in OpenCode 2. Notifications, smart titles and cited web search are now built in, so three plugins below are unnecessary. oh-my-openagent loads but does nothing on OpenCode 2, and Code Mode largely removes the reason to keep MCP servers disabled. The Bedrock setup still applies. See [OpenCode 2 broke five of my nine plugins, and I don't miss most of them](/posts/opencode-v2-migration/) for what changed and how to migrate.
+> **Update (November 2026): OpenCode 2 changes a lot of this.** OpenCode 1 plugins don't load in OpenCode 2. Notifications, smart titles and cited web search are now built in, so three plugins below are unnecessary. oh-my-openagent loads but does nothing on OpenCode 2, and Code Mode largely removes the reason to keep MCP servers disabled. The Bedrock setup still applies. See [OpenCode 2 broke five of my nine plugins, and I don't miss most of them](/posts/opencode-v2-migration/) for what changed and how to migrate.
 
 > **Note**: oh-my-opencode was recently renamed to [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent). If you have an existing setup, update your plugin reference from `oh-my-opencode@latest` to `oh-my-openagent@latest` in `opencode.json`. The config file (`oh-my-opencode.json`) name stays the same.
 
